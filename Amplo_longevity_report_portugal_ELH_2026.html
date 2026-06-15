@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Longevity Gap — Portugal 2026 | ELH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* ELH Core Palette */
+  --navy:#0B1221;
+  --navy-mid:#0F182D;
+  --blue:#2459E8;
+  --blue-light:#4F7BF0;
+  --blue-pale:rgba(36,89,232,.12);
+  --blue-ultra-pale:rgba(36,89,232,.06);
+  --cream:#F5EFE3;
+  --cream-dk:#EBE3D3;
+  --orange:#FF5C14;
+  --white:#FFFFFF;
+  /* Text on dark */
+  --td:rgba(255,255,255,.88);
+  --td-mid:rgba(255,255,255,.55);
+  --td-light:rgba(255,255,255,.32);
+  --bd:rgba(255,255,255,.1);
+  /* Text on cream/light */
+  --tl:var(--navy);
+  --tl-mid:rgba(11,18,33,.65);
+  --tl-light:rgba(11,18,33,.42);
+  --bl:rgba(11,18,33,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk',sans-serif;background:var(--cream);color:var(--tl);line-height:1.65;font-size:15px}
+
+/* ══ ELH CROSS DECORATION ══ */
+.elh-cross{position:absolute;pointer-events:none}
+.elh-cross svg{display:block}
+
+/* ══ COVER ══ */
+.cover{background:var(--navy);color:var(--white);padding:3.5rem 4.5rem;min-height:100vh;display:grid;grid-template-rows:auto 1fr auto;position:relative;overflow:hidden}
+.cover-deco-1{position:absolute;top:-2rem;right:2rem;opacity:.12;color:var(--blue)}
+.cover-deco-2{position:absolute;bottom:4rem;right:9rem;opacity:.08;color:var(--blue-light)}
+.cover-deco-3{position:absolute;top:8rem;right:16rem;opacity:.2;color:var(--blue)}
+.cover-header{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid var(--bd);padding-bottom:1.5rem;position:relative;z-index:1}
+.elh-wordmark{display:flex;align-items:center;gap:.75rem}
+.elh-icon{width:28px;height:28px;display:grid;grid-template-columns:1fr 1fr;gap:3px}
+.elh-icon div{background:var(--blue);border-radius:3px}
+.elh-icon div:nth-child(2){background:var(--blue-light)}
+.elh-name{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--white)}
+.elh-name span{color:var(--blue-light)}
+.cover-meta{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.06em;color:var(--td-light);text-align:right;line-height:1.6;text-transform:uppercase}
+.cover-body{display:flex;flex-direction:column;justify-content:center;padding:4rem 0 2rem;position:relative;z-index:1;max-width:800px}
+.cover-series-row{display:flex;align-items:center;gap:.75rem;margin-bottom:1.2rem}
+.cover-series-label{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-light);font-weight:400}
+.cover-series-badge{background:var(--blue);color:var(--white);font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.08em;text-transform:uppercase;padding:.18rem .55rem;border-radius:2px}
+.cover-h1{font-size:clamp(3.8rem,7vw,6.5rem);font-weight:700;line-height:.92;letter-spacing:-.02em;margin-bottom:.8rem;color:var(--white)}
+.cover-h1 .accent{color:var(--blue-light)}
+.cover-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,1.8vw,1.35rem);font-weight:300;font-style:italic;color:var(--td-mid);margin-bottom:2.5rem;line-height:1.45;max-width:600px}
+.cover-hook{font-size:.9rem;font-weight:300;color:var(--td-mid);max-width:520px;line-height:1.75;border-left:2px solid var(--blue);padding-left:1.2rem}
+.cover-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd);margin-top:4rem;border-top:1px solid var(--bd)}
+.cstat{background:rgba(255,255,255,.03);padding:1.4rem 2rem}
+.cstat-n{font-size:2.8rem;font-weight:700;line-height:.9;margin-bottom:.45rem;color:var(--white);letter-spacing:-.02em}
+.cstat-unit{font-size:1.3rem;font-weight:400;opacity:.6}
+.cstat-d{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--td-light);line-height:1.5;text-transform:uppercase;letter-spacing:.04em}
+.cstat-src{display:block;font-size:.55rem;color:rgba(255,255,255,.2);margin-top:.4rem}
+.cover-footer{border-top:1px solid var(--bd);padding-top:1.4rem;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1}
+.cover-footer-t{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--td-light)}
+
+/* ══ GAP DEFINITION ══ */
+.gap-def{background:var(--navy-mid);padding:4rem 4.5rem;border-bottom:1px solid var(--bd);position:relative;overflow:hidden}
+.gap-def-deco{position:absolute;right:3rem;top:50%;transform:translateY(-50%);opacity:.06;color:var(--blue)}
+.gap-def-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:240px 1fr;gap:4rem;align-items:center}
+.gap-def-left{}
+.gap-def-brand{font-size:3.5rem;font-weight:700;line-height:.88;letter-spacing:-.02em;color:var(--white);margin-bottom:.7rem}
+.gap-def-brand em{color:var(--blue-light);font-style:normal}
+.gap-def-tag{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-light);margin-bottom:.3rem;display:block}
+.gap-def-prop{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--td-light);text-transform:uppercase;letter-spacing:.1em}
+.gap-def-right{}
+.gap-def-lbl{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-light);margin-bottom:1.1rem}
+.gap-def-text{font-family:'Cormorant Garamond',serif;font-size:1.42rem;font-weight:300;color:var(--td);line-height:1.55;margin-bottom:1.5rem}
+.gap-def-text em{font-style:italic}
+.gap-three{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd)}
+.gap-t{background:rgba(255,255,255,.04);padding:.9rem 1.1rem}
+.gap-t-l{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-light);font-weight:400;margin-bottom:.35rem}
+.gap-t-v{font-size:.8rem;color:var(--td-mid);line-height:1.5;font-weight:300}
+.gap-def-close{font-family:'Space Mono',monospace;font-size:.7rem;color:var(--td-light);margin-top:1rem;font-style:italic;letter-spacing:.04em}
+
+/* ══ 5 MOVES ══ */
+.fivemoves{background:var(--navy);padding:4rem 4.5rem;border-bottom:1px solid var(--bd)}
+.fm-inner{max-width:900px;margin:0 auto}
+.fm-label{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-light);margin-bottom:2rem;display:block}
+.fm-title{font-size:1.3rem;font-weight:300;color:var(--td-mid);margin-bottom:2.5rem;line-height:1.5;max-width:640px}
+.fm-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--bd)}
+.fm-step{background:rgba(255,255,255,.035);padding:1.5rem 1.35rem}
+.fm-num{font-size:2.8rem;font-weight:700;color:rgba(255,255,255,.1);line-height:.9;margin-bottom:.7rem;letter-spacing:-.02em}
+.fm-text{font-size:.8rem;color:var(--td-mid);line-height:1.6;font-weight:300}
+.fm-text strong{color:var(--blue-light);font-weight:500}
+
+/* ══ SECTION BAND ══ */
+.band{background:var(--navy-mid);padding:1.2rem 4.5rem;display:flex;align-items:baseline;gap:1.2rem;border-top:1px solid var(--bd)}
+.band-n{font-size:1.4rem;font-weight:700;color:rgba(255,255,255,.15);line-height:1;letter-spacing:-.01em}
+.band-t{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--td-light)}
+
+/* ══ PAGE WRAP — CREAM ══ */
+.wrap{max-width:980px;margin:0 auto;padding:5rem 4.5rem;position:relative;background:var(--cream)}
+.wrap.dark{background:var(--navy)}
+.wrap+.wrap{border-top:1px solid var(--bl)}
+.wrap.dark+.wrap,.wrap.dark+.band,.band+.wrap.dark{border-top:1px solid var(--bd)}
+
+/* ══ TYPOGRAPHY — CREAM SECTION ══ */
+.kicker{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);font-weight:400;display:block;margin-bottom:.7rem}
+.kicker.on-dark{color:var(--blue-light)}
+h2.sh{font-size:clamp(1.9rem,3.8vw,3rem);font-weight:700;line-height:1.05;color:var(--navy);margin-bottom:.9rem;letter-spacing:-.015em}
+h2.sh em{font-style:italic;font-weight:400;color:var(--blue)}
+h2.sh.on-dark{color:var(--white)}
+h2.sh.on-dark em{color:var(--blue-light)}
+.intro{font-size:1rem;font-weight:300;color:var(--tl-mid);max-width:660px;line-height:1.8;margin-bottom:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid var(--bl)}
+.intro.on-dark{color:var(--td-mid);border-bottom-color:var(--bd)}
+.body{font-size:.9rem;color:var(--tl-mid);line-height:1.85;margin-bottom:1.2rem;max-width:700px}
+.body strong{color:var(--navy);font-weight:600}
+.body.on-dark{color:var(--td-mid)}
+.body.on-dark strong{color:var(--white)}
+h3.sub{font-size:1.35rem;font-weight:600;color:var(--navy);margin-bottom:.75rem;letter-spacing:-.01em}
+h3.sub.on-dark{color:var(--white)}
+.src{font-family:'Space Mono',monospace;font-size:.57rem;color:var(--tl-light);margin-top:.4rem;display:block;letter-spacing:.04em}
+.src.on-dark{color:var(--td-light)}
+.divider{height:1px;background:var(--bl);margin:2.5rem 0}
+.divider.on-dark{background:var(--bd)}
+
+/* ══ SOURCE TIER BADGES ══ */
+.tier{display:inline-block;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.08em;text-transform:uppercase;padding:.12rem .45rem;border-radius:2px;margin-left:.35rem;vertical-align:middle}
+.t1{background:var(--blue-pale);color:var(--blue)}
+.t2{background:rgba(255,92,20,.1);color:var(--orange)}
+.t3{background:rgba(11,18,33,.08);color:var(--tl-light)}
+.t3.on-dark{background:rgba(255,255,255,.08);color:var(--td-light)}
+
+/* ══ BRIDGE ══ */
+.bridge{background:var(--blue-pale);border-left:3px solid var(--blue);padding:1.1rem 1.6rem;margin:2.5rem 0;font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:var(--blue);line-height:1.55}
+
+/* ══ PULL QUOTE ══ */
+.pq{border-left:3px solid var(--blue);background:var(--blue-pale);padding:1.4rem 2rem;margin:2rem 0}
+.pq p{font-family:'Cormorant Garamond',serif;font-size:1.22rem;font-style:italic;color:var(--blue);line-height:1.5}
+
+/* ══ CALLOUT ══ */
+.callout{background:rgba(11,18,33,.06);border-left:3px solid var(--navy);padding:1.35rem 1.75rem;margin:2rem 0;font-size:.88rem;color:var(--tl-mid);line-height:1.7}
+.callout strong{font-family:'Space Mono',monospace;display:block;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);font-weight:700;margin-bottom:.4rem}
+
+/* ══ ALERT ══ */
+.alert{border:1px solid var(--bl);background:rgba(255,255,255,.6);padding:1.35rem 1.75rem;margin:2rem 0;display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start}
+.alert-icon{width:34px;height:34px;background:var(--navy);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0}
+.alert-t{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--navy);margin-bottom:.3rem}
+.alert-b{font-size:.85rem;color:var(--tl-mid);line-height:1.65}
+
+/* ══ CONCEPT TRIO ══ */
+.trio{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--bl);border:1px solid var(--bl);margin:2rem 0}
+.trio-c{background:rgba(255,255,255,.8);padding:1.75rem 1.6rem}
+.trio-c.hl{background:var(--navy)}
+.trio-lbl{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);font-weight:400;margin-bottom:.55rem}
+.trio-c.hl .trio-lbl{color:var(--blue-light)}
+.trio-term{font-size:1.5rem;font-weight:700;margin-bottom:.7rem;color:var(--navy);letter-spacing:-.01em}
+.trio-c.hl .trio-term{color:var(--white)}
+.trio-def{font-size:.83rem;color:var(--tl-mid);line-height:1.65}
+.trio-c.hl .trio-def{color:var(--td-mid)}
+
+/* ══ TENSIONS ══ */
+.tensions-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0}
+.tension-card{background:rgba(255,255,255,.75);border:1px solid var(--bl);padding:2rem;position:relative;overflow:hidden}
+.tension-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--navy),var(--blue))}
+.tension-num{font-size:4rem;font-weight:700;color:rgba(11,18,33,.05);line-height:1;position:absolute;top:.5rem;right:1rem;letter-spacing:-.02em}
+.tension-lbl{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:.65rem}
+.tension-title{font-size:1.15rem;font-weight:600;color:var(--navy);margin-bottom:1.1rem;line-height:1.25;letter-spacing:-.01em}
+.tension-poles{display:grid;grid-template-columns:1fr auto 1fr;gap:.75rem;align-items:center;margin-bottom:1.1rem}
+.tension-pole{background:var(--navy);color:var(--white);padding:.65rem .9rem;font-size:.78rem;line-height:1.45;text-align:center;font-weight:500;border-radius:3px}
+.tension-vs{font-family:'Space Mono',monospace;font-size:.7rem;color:var(--tl-light);text-align:center;white-space:nowrap}
+.tension-insight{font-size:.82rem;color:var(--tl-mid);line-height:1.65;border-top:1px solid var(--bl);padding-top:1rem}
+.tension-insight em{color:var(--blue);font-style:normal;font-weight:500}
+
+/* ══ READINESS ══ */
+.rt{width:100%;border-collapse:collapse}
+.rt thead tr{background:var(--navy);color:var(--white)}
+.rt th{padding:.75rem 1.2rem;font-family:'Space Mono',monospace;text-align:left;font-weight:700;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase}
+.rt td{padding:.82rem 1.2rem;border-bottom:1px solid var(--cream-dk);font-size:.83rem;vertical-align:middle}
+.rt tr:nth-child(even) td{background:rgba(255,255,255,.5)}
+.rt td:first-child{font-weight:600;color:var(--navy)}
+.rs-badge{display:inline-block;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.07em;font-weight:700;padding:.22rem .7rem;border-radius:2px;white-space:nowrap;text-transform:uppercase}
+.rs-high{background:var(--blue-pale);color:var(--blue)}
+.rs-med{background:rgba(255,92,20,.1);color:var(--orange)}
+.rs-low{background:rgba(11,18,33,.07);color:var(--tl-light)}
+.rs-note{font-size:.78rem;color:var(--tl-mid)}
+
+/* ══ PARADIGM INFOGRAPHIC ══ */
+.paradigm-wrap{margin:2rem 0;overflow:hidden;border:1px solid var(--bl)}
+.paradigm-header{display:grid;grid-template-columns:185px 1fr 1fr;background:var(--navy)}
+.ph-blank{border-right:1px solid var(--bd)}
+.ph-label{padding:.8rem 1.2rem;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;text-align:center}
+.ph-old{color:var(--td-light);border-right:1px solid var(--bd)}
+.ph-new{color:var(--blue-light)}
+.paradigm-row{display:grid;grid-template-columns:185px 1fr 1fr;border-bottom:1px solid var(--bl)}
+.paradigm-row:last-child{border-bottom:none}
+.paradigm-row:nth-child(even) .pr-old,.paradigm-row:nth-child(even) .pr-new{background:rgba(255,255,255,.5)}
+.pr-actor{background:var(--navy);padding:.9rem 1.15rem;border-right:1px solid var(--bd);display:flex;flex-direction:column;justify-content:center}
+.pr-actor-lbl{font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--td-light)}
+.pr-actor-name{font-size:.95rem;font-weight:600;color:var(--white);margin-top:.15rem}
+.pr-old{background:rgba(255,255,255,.6);padding:.82rem 1.3rem;border-right:1px solid var(--bl);font-size:.8rem;color:var(--tl-light);line-height:1.5;display:flex;align-items:center}
+.pr-new{background:rgba(255,255,255,.6);padding:.82rem 1.3rem;font-size:.8rem;color:var(--tl);line-height:1.5;display:flex;align-items:center;font-weight:500}
+.pr-new-inner{position:relative;padding-left:.85rem}
+.pr-new-inner::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:75%;background:var(--blue);border-radius:1px}
+
+/* ══ STAKE CARDS ══ */
+.stake-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:1.5rem 0}
+.stake{border:1px solid var(--bl);background:rgba(255,255,255,.7);padding:1.55rem 1.75rem;position:relative;overflow:hidden}
+.stake::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;background:var(--blue)}
+.stake.alt::before{background:var(--orange)}
+.stake.full{grid-column:1/-1}.stake.full::before{background:var(--navy)}
+.stake-lbl{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:.4rem}
+.stake.alt .stake-lbl{color:var(--orange)}.stake.full .stake-lbl{color:var(--tl-light)}
+.stake-name{font-size:1.2rem;font-weight:600;margin-bottom:.6rem;color:var(--navy);letter-spacing:-.01em}
+.stake-body{font-size:.83rem;color:var(--tl-mid);line-height:1.65}
+.tag-row{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.75rem}
+.tag{font-family:'Space Mono',monospace;font-size:.57rem;letter-spacing:.04em;text-transform:uppercase;border:1px solid var(--bl);padding:.17rem .52rem;color:var(--tl-light);border-radius:1px}
+
+/* ══ MATRIZ ══ */
+.matrix-wrap{margin:2.5rem 0;border:1px solid var(--bl);overflow:hidden}
+.matrix-header{display:grid;grid-template-columns:1fr 1fr 1fr;background:var(--navy)}
+.mh-cell{padding:.8rem 1.3rem;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;text-align:center;color:var(--td-light);border-right:1px solid var(--bd)}
+.mh-cell:last-child{border-right:none}
+.mh-cell.hl{color:var(--blue-light)}
+.matrix-row{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--bl)}
+.matrix-row:last-child{border-bottom:none}
+.matrix-row:nth-child(even) .mc-problem{background:rgba(255,255,255,.4)}
+.mc-problem{background:rgba(255,255,255,.6);padding:1rem 1.3rem;border-right:1px solid var(--bl);font-size:.82rem;color:var(--tl-mid);line-height:1.55;display:flex;align-items:center}
+.mc-opp{background:rgba(255,255,255,.6);padding:1rem 1.3rem;border-right:1px solid var(--bl);font-size:.82rem;color:var(--tl);line-height:1.55;font-weight:500;display:flex;align-items:center}
+.mc-elh{background:var(--blue-ultra-pale);padding:1rem 1.3rem;font-size:.82rem;color:var(--blue);line-height:1.55;font-weight:500;display:flex;align-items:center}
+
+/* ══ QUOTES ══ */
+.quotes-wrap{background:var(--navy);margin:3rem -4.5rem;padding:3.5rem 4.5rem}
+.q-header{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--td-light);margin-bottom:2rem}
+.q-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.q-card{border:1px dashed rgba(255,255,255,.15);padding:2rem;position:relative}
+.q-pending{position:absolute;top:.7rem;right:.7rem;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.2);background:rgba(255,255,255,.05);padding:.12rem .4rem;border-radius:1px}
+.q-mark{font-family:'Cormorant Garamond',serif;font-size:3.5rem;line-height:.5;color:var(--blue-light);opacity:.3;display:block;margin-bottom:.9rem}
+.q-text{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:rgba(255,255,255,.36);line-height:1.65;padding-left:1rem;margin-bottom:1.4rem;border-left:2px dashed rgba(255,255,255,.12)}
+.q-by{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-light)}
+.q-role{display:block;font-family:'Space Grotesk',sans-serif;font-size:.7rem;color:var(--td-light);margin-top:.2rem;text-transform:none;letter-spacing:0;font-weight:300}
+
+/* ══ STARTUP MATURITY ══ */
+.maturity-tier{margin-bottom:2rem}
+.maturity-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:1px solid var(--bl)}
+.maturity-badge{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:.28rem .75rem;border-radius:2px}
+.mb-validated{background:var(--blue-pale);color:var(--blue)}
+.mb-emerging{background:rgba(255,92,20,.1);color:var(--orange)}
+.mb-frontier{background:rgba(11,18,33,.07);color:var(--tl-light)}
+.maturity-desc{font-size:.8rem;color:var(--tl-light);font-style:italic;line-height:1.5}
+.startup-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.scard{background:rgba(255,255,255,.7);border:1px solid var(--bl);padding:1.35rem 1.45rem}
+.scard-icon{font-size:1.1rem;margin-bottom:.6rem}
+.scard-cat{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--tl-light);margin-bottom:.3rem}
+.scard-name{font-size:1.05rem;font-weight:600;color:var(--navy);margin-bottom:.5rem;letter-spacing:-.01em}
+.scard-body{font-size:.78rem;color:var(--tl-mid);line-height:1.6;margin-bottom:.6rem}
+.scard-cos{font-size:.72rem;color:var(--tl-light);border-top:1px solid var(--cream-dk);padding-top:.5rem;line-height:1.55}
+.scard-cos strong{color:var(--navy)}
+
+/* ══ ELH BOX ══ */
+.elh-box{background:var(--blue);color:var(--white);padding:3rem 3.5rem;margin:2.5rem 0;position:relative;overflow:hidden}
+.elh-box-deco{position:absolute;right:2rem;bottom:-1rem;opacity:.08;color:var(--white)}
+.elh-kicker{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:.9rem}
+.elh-title{font-size:1.65rem;font-weight:700;max-width:580px;margin-bottom:1.1rem;line-height:1.15;letter-spacing:-.01em}
+.elh-body{font-size:.88rem;font-weight:300;color:rgba(255,255,255,.82);max-width:600px;line-height:1.75}
+.elh-body+.elh-body{margin-top:.8rem}
+.elh-pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.2);margin-top:2rem}
+.elh-p{background:rgba(255,255,255,.1);padding:1.1rem 1.3rem}
+.elh-p-n{font-size:1.6rem;font-weight:700;color:rgba(255,255,255,.25);line-height:1;margin-bottom:.35rem;letter-spacing:-.02em}
+.elh-p-t{font-size:.78rem;color:rgba(255,255,255,.75);line-height:1.5;font-weight:300}
+
+/* ══ KPI BANNER ══ */
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bl);border:1px solid var(--bl);margin:2rem 0}
+.kpi{background:rgba(255,255,255,.7);padding:1.55rem;text-align:center}
+.kpi.dk{background:var(--navy)}
+.kpi-n{font-size:2.6rem;font-weight:700;color:var(--navy);line-height:1;margin-bottom:.35rem;letter-spacing:-.02em}
+.kpi.dk .kpi-n{color:var(--blue-light)}
+.kpi-l{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--tl-light);line-height:1.45}
+.kpi.dk .kpi-l{color:var(--td-light)}
+.kpi-s{font-family:'Space Mono',monospace;font-size:.52rem;color:var(--tl-light);opacity:.6;display:block;margin-top:.35rem}
+.kpi.dk .kpi-s{color:var(--td-light);opacity:.4}
+
+/* ══ COMPARISON TABLE ══ */
+.ct-title{font-size:1.3rem;font-weight:600;color:var(--navy);margin-bottom:1.1rem;letter-spacing:-.01em}
+.ct{width:100%;border-collapse:collapse;font-size:.82rem}
+.ct thead tr{background:var(--navy);color:var(--white)}
+.ct th{padding:.78rem 1.15rem;text-align:left;font-family:'Space Mono',monospace;font-weight:700;font-size:.62rem;letter-spacing:.07em;text-transform:uppercase}
+.ct th:nth-child(2){background:var(--blue);text-align:center}
+.ct th:nth-child(3){text-align:center}
+.ct td{padding:.8rem 1.15rem;border-bottom:1px solid var(--cream-dk);color:var(--tl-mid)}
+.ct td:nth-child(1){font-weight:600;color:var(--navy)}
+.ct td:nth-child(2){text-align:center;font-weight:700;color:var(--blue);background:var(--blue-ultra-pale)}
+.ct td:nth-child(3){text-align:center}
+.ct td:nth-child(4){font-size:.76rem;color:var(--tl-light)}
+.ct tr:nth-child(even) td{background:rgba(255,255,255,.5)}
+.ct tr:nth-child(even) td:nth-child(2){background:var(--blue-pale)}
+
+/* ══ BAR CHART ══ */
+.bar-row{display:grid;grid-template-columns:210px 1fr 52px;align-items:center;gap:1rem;margin-bottom:.72rem}
+.bar-lbl{font-size:.8rem;color:var(--tl);font-weight:500;text-align:right}
+.bar-lbl span{display:block;font-family:'Space Mono',monospace;font-size:.58rem;font-weight:400;color:var(--tl-light);margin-top:.1rem}
+.bar-track{height:9px;background:var(--cream-dk);border-radius:2px;overflow:hidden}
+.bar-fill{height:100%;border-radius:2px}
+.bf-pt{background:var(--blue)}
+.bf-eu{background:var(--navy);opacity:.3}
+.bf-top{background:var(--orange)}
+.bar-val{font-size:.78rem;font-weight:700;color:var(--navy)}
+
+/* ══ INVEST CHART ══ */
+.invest-chart{display:flex;align-items:flex-end;gap:1.2rem;height:155px;border-bottom:2px solid var(--bl);padding:0 .5rem}
+.ic-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+.ic-col{width:100%;border-radius:3px 3px 0 0;display:flex;align-items:center;justify-content:center}
+.ic-col.hl{background:var(--blue)!important}
+.ic-amt{font-family:'Space Mono',monospace;font-size:.65rem;font-weight:700}
+.ic-amt.wh{color:var(--white)}.ic-amt.dk{color:rgba(11,18,33,.45)}
+.ic-yr{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--tl-light);margin-top:.4rem;text-align:center;letter-spacing:.04em;text-transform:uppercase}
+.ic-yr.hl{color:var(--blue);font-weight:700}
+
+/* ══ INITIATIVE CARDS ══ */
+.init-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.35rem;margin:2rem 0}
+.icard{background:rgba(255,255,255,.7);border:1px solid var(--bl);padding:1.55rem}
+.icard-icon{width:38px;height:38px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.95rem;margin-bottom:.85rem}
+.ig{background:var(--blue-pale)}.igo{background:rgba(255,92,20,.1)}.in{background:rgba(11,18,33,.06)}
+.icard-lbl{font-family:'Space Mono',monospace;font-size:.57rem;letter-spacing:.12em;text-transform:uppercase;color:var(--tl-light);margin-bottom:.35rem}
+.icard-title{font-size:1.05rem;font-weight:600;color:var(--navy);margin-bottom:.5rem;letter-spacing:-.01em}
+.icard-body{font-size:.79rem;color:var(--tl-mid);line-height:1.6}
+.icard-src{font-family:'Space Mono',monospace;font-size:.55rem;color:var(--tl-light);border-top:1px solid var(--cream-dk);padding-top:.48rem;margin-top:.62rem;display:block;letter-spacing:.04em}
+
+/* ══ IMPLICATIONS ══ */
+.impl-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--bl);border:1px solid var(--bl);margin:2rem 0}
+.impl-row{display:grid;grid-template-columns:155px 1fr;background:rgba(255,255,255,.7)}
+.impl-row:nth-child(even){background:rgba(255,255,255,.4)}
+.impl-actor{background:var(--navy);padding:.9rem 1.15rem;display:flex;flex-direction:column;justify-content:center}
+.impl-actor-lbl{font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--td-light)}
+.impl-actor-name{font-size:.92rem;font-weight:600;color:var(--white);margin-top:.1rem}
+.impl-text{padding:.85rem 1.25rem;font-size:.8rem;color:var(--tl-mid);line-height:1.55;display:flex;align-items:center}
+
+/* ══ CLOSE ══ */
+.close-wrap{background:var(--navy);color:var(--white);padding:5rem 4.5rem;position:relative;overflow:hidden}
+.close-deco{position:absolute;right:3rem;top:50%;transform:translateY(-50%);opacity:.07;color:var(--blue)}
+.close-body{max-width:640px;position:relative;z-index:1}
+.close-kicker{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-light);display:block;margin-bottom:1rem}
+.close-h{font-size:clamp(1.8rem,3vw,2.7rem);font-weight:700;line-height:1.1;margin-bottom:1.5rem;letter-spacing:-.015em}
+.close-h em{font-style:italic;font-weight:400;color:var(--blue-light)}
+.close-p{font-size:.9rem;font-weight:300;color:var(--td-mid);line-height:1.85;margin-bottom:1rem}
+
+/* ══ REFS ══ */
+.refs{background:var(--navy-mid);padding:3.5rem 4.5rem;border-top:1px solid var(--bd)}
+.refs-inner{max-width:980px;margin:0 auto}
+.refs-t{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--td-light);margin-bottom:1.4rem}
+.refs-grid{display:grid;grid-template-columns:1fr 1fr;gap:.4rem 3rem}
+.ref{font-size:.7rem;line-height:1.55;padding:.4rem 0;border-bottom:1px solid var(--bd);color:var(--td-mid)}
+.ref em{color:var(--td-light);font-style:normal;font-size:.63rem}
+.refs-method{margin-top:2rem;background:rgba(255,255,255,.04);border:1px solid var(--bd);padding:1.4rem 1.75rem;font-size:.75rem;color:var(--td-light);line-height:1.65;max-width:820px}
+.refs-method strong{color:var(--td-mid);font-weight:600;display:block;margin-bottom:.4rem;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase}
+
+/* ══ FOOT ══ */
+.foot{background:var(--navy);padding:1.2rem 4.5rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--bd)}
+.foot-t{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--td-light)}
+
+/* ══ UTILS ══ */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+
+/* ELH Cross SVG helper */
+.elh-cross-sm{display:inline-grid;grid-template-columns:1fr 1fr;gap:3px;width:20px;height:20px;vertical-align:middle;margin-right:.5rem}
+.elh-cross-sm div{background:currentColor;border-radius:2px}
+
+/* ══ TABLE OF CONTENTS ══ */
+.toc-wrap{background:var(--navy);padding:4rem 4.5rem;border-bottom:1px solid var(--bd)}
+.toc-inner{max-width:900px;margin:0 auto}
+.toc-heading{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--blue-light);margin-bottom:2rem}
+.toc-list{display:flex;flex-direction:column;gap:0}
+.toc-item{display:grid;grid-template-columns:40px 1fr auto;align-items:center;gap:1.25rem;padding:1rem 0;border-bottom:1px solid var(--bd)}
+.toc-item:last-child{border-bottom:none}
+.toc-num{font-family:'Space Mono',monospace;font-size:.95rem;font-weight:700;color:var(--blue);line-height:1}
+.toc-num.dash{color:rgba(255,255,255,.2);font-size:.7rem}
+.toc-title{font-size:1rem;font-weight:600;color:var(--white)}
+.toc-sub{display:block;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.06em;color:var(--td-mid);margin-top:.2rem;font-weight:400}
+.toc-dots{flex:1;height:1px;background:repeating-linear-gradient(to right,rgba(255,255,255,.15) 0,rgba(255,255,255,.15) 4px,transparent 4px,transparent 8px);margin:0 .5rem;align-self:center}
+.toc-tag{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--td-light);white-space:nowrap;letter-spacing:.08em;text-transform:uppercase}
+
+/* ══ SECTION OPENER ══ */
+.sec-opener{background:var(--navy);padding:4.5rem 4.5rem 3.5rem;border-bottom:1px solid var(--bd);position:relative;overflow:hidden}
+.sec-opener-deco{position:absolute;right:3rem;bottom:-2rem;opacity:.07;color:var(--blue);pointer-events:none}
+.sec-opener-breadcrumb{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--td-light);margin-bottom:2rem;display:flex;align-items:center;gap:.75rem}
+.sec-opener-breadcrumb::before{content:'';display:block;width:24px;height:1px;background:var(--blue)}
+.sec-opener-body{max-width:700px}
+.sec-opener-num{font-size:5rem;font-weight:700;color:rgba(255,255,255,.06);line-height:.85;letter-spacing:-.03em;margin-bottom:-.2rem}
+.sec-opener-title{font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--white);line-height:1.05;letter-spacing:-.02em;margin-bottom:1rem}
+.sec-opener-title em{color:var(--blue-light);font-style:italic;font-weight:400}
+.sec-opener-desc{font-size:.9rem;font-weight:300;color:var(--td-mid);line-height:1.75;max-width:580px}
+.sec-opener-stats{display:grid;grid-template-columns:repeat(3,auto) 1fr;gap:0;margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--bd)}
+.sec-stat{padding-right:3rem}
+.sec-stat-n{font-size:2.2rem;font-weight:700;color:var(--white);line-height:1;letter-spacing:-.02em}
+.sec-stat-n .su{font-size:1rem;opacity:.6;font-weight:400}
+.sec-stat-d{font-family:'Space Mono',monospace;font-size:.56rem;color:var(--td-light);text-transform:uppercase;letter-spacing:.06em;line-height:1.45;margin-top:.3rem}
+
+/* ══ RUNNING FOOTER ══ */
+.wrap-footer{border-top:1px solid var(--bl);margin-top:4rem;padding-top:1rem;display:flex;justify-content:space-between;align-items:center}
+.wf-left{font-family:'Space Mono',monospace;font-size:.57rem;letter-spacing:.08em;text-transform:uppercase;color:var(--tl-light)}
+.wf-right{font-family:'Space Mono',monospace;font-size:.57rem;letter-spacing:.08em;text-transform:uppercase;color:var(--tl-light);text-align:right}
+.wf-dot{display:inline-block;width:4px;height:4px;background:var(--blue);border-radius:50%;vertical-align:middle;margin:0 .6rem}
+
+/* ══ STAT SPOTLIGHT ══ */
+.stat-spotlight{background:var(--navy);margin:3rem -4.5rem;padding:2.5rem 4.5rem}
+.ss-label{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--td-light);margin-bottom:1.5rem}
+.ss-grid{display:grid;gap:1px;background:var(--bd)}
+.ss-grid.cols-3{grid-template-columns:repeat(3,1fr)}
+.ss-grid.cols-4{grid-template-columns:repeat(4,1fr)}
+.ss-cell{background:rgba(255,255,255,.04);padding:1.75rem 2rem}
+.ss-n{font-size:3rem;font-weight:700;color:var(--white);line-height:.9;letter-spacing:-.02em;margin-bottom:.6rem}
+.ss-n .sup{font-size:1.2rem;font-weight:400;opacity:.6;vertical-align:super}
+.ss-d{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--td-mid);text-transform:uppercase;letter-spacing:.05em;line-height:1.5}
+.ss-src{display:block;font-size:.52rem;color:var(--td-light);opacity:.6;margin-top:.4rem}
+.ss-cell.accent .ss-n{color:var(--blue-light)}
+
+/* ══ INSIGHT BOX ══ */
+.insight{display:grid;grid-template-columns:3px 1fr;gap:0;margin:2rem 0;border:1px solid var(--bl)}
+.insight-bar{background:var(--blue)}
+.insight-body{padding:1.4rem 1.75rem;background:rgba(36,89,232,.05)}
+.insight-label{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:.5rem}
+.insight-title{font-size:1.05rem;font-weight:600;color:var(--navy);margin-bottom:.5rem;line-height:1.3;letter-spacing:-.01em}
+.insight-text{font-size:.85rem;color:var(--tl-mid);line-height:1.7}
+
+/* ══ TWO COLUMN BODY TEXT ══ */
+.two-col-text{columns:2;column-gap:2.5rem;max-width:none}
+.two-col-text p{break-inside:avoid}
+.two-col-text .body{max-width:none}
+
+/* ══ PAGE LABEL (top of content sections) ══ */
+.page-label{font-family:'Space Mono',monospace;font-size:.57rem;letter-spacing:.12em;text-transform:uppercase;color:var(--tl-light);margin-bottom:2.5rem;display:flex;align-items:center;gap:.75rem}
+.page-label::before{content:'';display:block;width:20px;height:1px;background:var(--bl)}
+
+
+</style>
+</head>
+<body>
+
+<!-- ╔══ COVER ══╗ -->
+<div class="cover">
+  <!-- Decorative cross elements -->
+  <div class="cover-deco-1">
+    <svg width="180" height="180" viewBox="0 0 180 180"><rect x="60" y="0" width="60" height="60" rx="10" fill="currentColor"/><rect x="0" y="64" width="60" height="60" rx="10" fill="currentColor" opacity=".6"/><rect x="64" y="64" width="52" height="52" rx="9" fill="currentColor"/><rect x="120" y="64" width="60" height="60" rx="10" fill="currentColor" opacity=".7"/><rect x="60" y="128" width="60" height="52" rx="10" fill="currentColor" opacity=".5"/></svg>
+  </div>
+  <div class="cover-deco-2">
+    <svg width="120" height="120" viewBox="0 0 120 120"><rect x="40" y="0" width="40" height="40" rx="8" fill="currentColor"/><rect x="0" y="44" width="40" height="40" rx="8" fill="currentColor" opacity=".7"/><rect x="44" y="44" width="32" height="32" rx="7" fill="currentColor"/><rect x="80" y="44" width="40" height="40" rx="8" fill="currentColor" opacity=".6"/><rect x="40" y="84" width="40" height="36" rx="8" fill="currentColor" opacity=".5"/></svg>
+  </div>
+  <div class="cover-deco-3">
+    <svg width="60" height="60" viewBox="0 0 60 60"><rect x="0" y="0" width="28" height="28" rx="6" fill="currentColor"/><rect x="32" y="0" width="28" height="28" rx="6" fill="currentColor" opacity=".6"/><rect x="0" y="32" width="28" height="28" rx="6" fill="currentColor" opacity=".5"/><rect x="32" y="32" width="28" height="28" rx="6" fill="currentColor" opacity=".8"/></svg>
+  </div>
+
+  <div class="cover-header">
+    <div class="elh-wordmark">
+      <div class="elh-icon"><div></div><div></div><div></div><div></div></div>
+      <div class="elh-name">European <span>Longevity</span> Hub</div>
+    </div>
+    <div class="cover-meta">Edição I · Série ELH Reports<br>Junho 2026 · Lisboa</div>
+  </div>
+
+  <div class="cover-body">
+    <div class="cover-series-row">
+      <span class="cover-series-label">The ELH Lens</span>
+      <span class="cover-series-badge">Edição I</span>
+    </div>
+    <h1 class="cover-h1">The<br>Longevity<br><span class="accent">Gap</span></h1>
+    <p class="cover-sub">Portugal e a infraestrutura necessária para transformar anos de vida em anos de saúde</p>
+    <p class="cover-hook">Em menos de um século, a humanidade ganhou três décadas de vida. A questão que vai definir os próximos cinquenta anos não é quanto mais viveremos — mas com que qualidade. Esse intervalo tem nome, tem escala e tem mercado.</p>
+    <div class="cover-stats">
+      <div class="cstat">
+        <div class="cstat-n">73,3<span class="cstat-unit"> anos</span></div>
+        <div class="cstat-d">Esperança de vida média global, 2024 — vs. 46 anos em 1950<span class="cstat-src">ONU / INED, World Population Prospects, 2024 · Oficial</span></div>
+      </div>
+      <div class="cstat">
+        <div class="cstat-n">2,1<span class="cstat-unit">B</span></div>
+        <div class="cstat-d">Pessoas com 60+ em 2050 — vs. 1,0 mil milhões em 2020<span class="cstat-src">OMS, Ageing and Health, 2025 · Oficial</span></div>
+      </div>
+      <div class="cstat">
+        <div class="cstat-n">~$29<span class="cstat-unit">B</span></div>
+        <div class="cstat-d">Estimativa do mercado global de longevidade, 2026<span class="cstat-src">NewMarketPitch, Q1 2026 · Estimativa setorial</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="cover-footer">
+    <div class="cover-footer-t">Confidential · European Longevity Hub · 2026</div>
+    <div class="cover-footer-t">europeanlongevityhub.com</div>
+  </div>
+</div>
+
+
+<!-- ╔══ GAP DEFINITION ══╗ -->
+<div class="gap-def">
+  <div class="gap-def-deco">
+    <svg width="200" height="200" viewBox="0 0 200 200"><rect x="70" y="0" width="60" height="60" rx="10" fill="currentColor"/><rect x="0" y="64" width="60" height="60" rx="10" fill="currentColor" opacity=".7"/><rect x="70" y="70" width="60" height="60" rx="10" fill="currentColor"/><rect x="140" y="64" width="60" height="60" rx="10" fill="currentColor" opacity=".6"/><rect x="70" y="140" width="60" height="60" rx="10" fill="currentColor" opacity=".5"/></svg>
+  </div>
+  <div class="gap-def-inner">
+    <div class="gap-def-left">
+      <div class="gap-def-brand">The<br>Longevity<br><em>Gap</em></div>
+      <span class="gap-def-tag">Conceito proprietário</span>
+      <div class="gap-def-prop">ELH Editorial Series</div>
+    </div>
+    <div class="gap-def-right">
+      <div class="gap-def-lbl">O que é?</div>
+      <p class="gap-def-text">Chamamos de <em>Longevity Gap</em> a distância entre os anos que a humanidade aprendeu a adicionar à vida e a capacidade dos sistemas — de saúde, de cuidado, de financiamento e de inovação — de transformar esses anos em saúde, autonomia e participação ativa.</p>
+      <div class="gap-three">
+        <div class="gap-t"><div class="gap-t-l">É demográfico</div><div class="gap-t-v">Populações que envelhecem mais rápido do que os sistemas conseguem responder</div></div>
+        <div class="gap-t"><div class="gap-t-l">É sistémico</div><div class="gap-t-v">Modelos de cuidado desenhados para a doença aguda, não para a vida longa</div></div>
+        <div class="gap-t"><div class="gap-t-l">É económico</div><div class="gap-t-v">Anos adicionais de vida que não se convertem em autonomia, produtividade ou bem-estar</div></div>
+      </div>
+      <p class="gap-def-close">É a razão de ser deste report. É o que o ELH se propõe a medir — e a ajudar a reduzir.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ╔══ 5 MOVIMENTOS ══╗ -->
+<div class="fivemoves">
+  <div class="fm-inner">
+    <span class="fm-label">A Tese em 5 Movimentos — Antes de Começar</span>
+    <p class="fm-title">A espinha dorsal deste report cabe em cinco frases. O resto é evidência, contexto e implicações.</p>
+    <div class="fm-steps">
+      <div class="fm-step"><div class="fm-num">1</div><div class="fm-text">A humanidade ganhou <strong>décadas de vida</strong> num único século. Essa vitória está feita.</div></div>
+      <div class="fm-step"><div class="fm-num">2</div><div class="fm-text">Esses anos não são necessariamente <strong>anos saudáveis</strong>. O gap entre lifespan e healthspan é o problema central do século XXI.</div></div>
+      <div class="fm-step"><div class="fm-num">3</div><div class="fm-text">Fechar essa lacuna exige <strong>infraestrutura</strong>: dados, validação clínica, modelos de cuidado, financiamento e articulação entre atores.</div></div>
+      <div class="fm-step"><div class="fm-num">4</div><div class="fm-text"><strong>Portugal</strong> não é relevante apesar dos seus desafios — é relevante justamente por causa deles.</div></div>
+      <div class="fm-step"><div class="fm-num">5</div><div class="fm-text">O <strong>ELH</strong> conecta ciência, clínica, capital e política pública em torno de soluções que chegam às pessoas.</div></div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ╔══ ÍNDICE ══╗ -->
+<div class="toc-wrap">
+  <div class="toc-inner">
+    <div class="toc-heading">Índice — The Longevity Gap · Portugal 2026</div>
+    <div class="toc-list">
+      <div class="toc-item">
+        <div class="toc-num">01</div>
+        <div>
+          <div class="toc-title">O Mundo que Envelheceu</div>
+          <span class="toc-sub">Contexto global · Mercado de longevidade · A transformação demográfica</span>
+        </div>
+        <div class="toc-tag">Contexto Global</div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">02</div>
+        <div>
+          <div class="toc-title">Europa e Portugal — Do Epicentro ao Laboratório</div>
+          <span class="toc-sub">Dados comparativos · O paradoxo português · Portugal como testbed</span>
+        </div>
+        <div class="toc-tag">Europa · Portugal</div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num dash">—</div>
+        <div>
+          <div class="toc-title" style="color:var(--td-mid);font-weight:400">As Quatro Tensões que Definem a Oportunidade Portuguesa</div>
+          <span class="toc-sub">Diagnóstico estrutural · Portugal Readiness Score</span>
+        </div>
+        <div class="toc-tag" style="color:var(--td-light)">Análise</div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">03</div>
+        <div>
+          <div class="toc-title">O que é Longevidade para os Atores do Sistema</div>
+          <span class="toc-sub">Paradigma da transição · Leitura por stakeholder · Matriz de convergência</span>
+        </div>
+        <div class="toc-tag">Atores · Sistema</div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">04</div>
+        <div>
+          <div class="toc-title">O que Está Sendo Construído — Global e em Portugal</div>
+          <span class="toc-sub">Ecossistema global por maturidade · Iniciativas nacionais · O papel do ELH</span>
+        </div>
+        <div class="toc-tag">Startups · ELH</div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">05</div>
+        <div>
+          <div class="toc-title">Indicadores de Mercado e Posicionamento Estratégico</div>
+          <span class="toc-sub">Gasto em prevenção · Silver Economy · Implicações por público</span>
+        </div>
+        <div class="toc-tag">KPIs · Mercado</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ╔══ PARTE I: CONTEXTO GLOBAL ══╗ -->
+<!-- SECTION OPENER 01 -->
+<div class="sec-opener">
+  <div class="sec-opener-deco"><svg width="220" height="220" viewBox="0 0 220 220"><rect x="76" y="0" width="68" height="68" rx="11" fill="currentColor"/><rect x="0" y="76" width="68" height="68" rx="11" fill="currentColor" opacity=".6"/><rect x="76" y="76" width="68" height="68" rx="11" fill="currentColor"/><rect x="152" y="76" width="68" height="68" rx="11" fill="currentColor" opacity=".5"/><rect x="76" y="152" width="68" height="68" rx="11" fill="currentColor" opacity=".4"/></svg></div>
+  <div class="sec-opener-breadcrumb">Secção 01 de 05</div>
+  <div class="sec-opener-body">
+    <div class="sec-opener-num">01</div>
+    <h2 class="sec-opener-title">O Mundo que<br><em>Envelheceu</em></h2>
+    <p class="sec-opener-desc">A transformação demográfica mais rápida da história humana já está a acontecer. Esta secção contextualiza o cenário global, introduz o conceito central de healthspan e mapeia o mercado de longevidade que está a emergir.</p>
+  </div>
+  <div class="sec-opener-stats">
+    <div class="sec-stat"><div class="sec-stat-n">73<span class="su">,3 anos</span></div><div class="sec-stat-d">esperança de vida<br>média global, 2024<br><span style="opacity:.5">vs. 46 em 1950</span></div></div>
+    <div class="sec-stat"><div class="sec-stat-n">2,1<span class="su">B</span></div><div class="sec-stat-d">pessoas com 60+<br>em 2050<span style="opacity:.5;display:block">OMS, 2025</span></div></div>
+    <div class="sec-stat"><div class="sec-stat-n">~$29<span class="su">B</span></div><div class="sec-stat-d">mercado global de<br>longevidade, 2026<span style="opacity:.5;display:block">estimativa setorial</span></div></div>
+    <div></div>
+  </div>
+</div>
+
+
+<div class="wrap">
+  <div class="page-label">European Longevity Hub · The Longevity Gap 2026 · Secção 01</div>
+  <span class="kicker">De 46 para 73 anos em menos de um século</span>
+  <h2 class="sh">A transformação demográfica<br><em>mais rápida da história humana</em></h2>
+  <p class="intro">Em 1950, a esperança de vida média global era de 46 anos. Em 2024, é de 73. A humanidade ganhou quase três décadas de vida num único século. Mas a verdadeira disrupção não está nos anos ganhos: está no que fazemos com eles.</p>
+
+  <div class="two">
+    <div>
+      <p class="body">A OMS estima que a população global com 60 anos ou mais crescerá de 1,0 mil milhões em 2020 para <strong>2,1 mil milhões em 2050</strong>. No mesmo horizonte, as pessoas com 65 ou mais passarão de 761 milhões (2021) para 1,6 mil milhões — quase o dobro — enquanto as com 80 ou mais anos deverão triplicar, atingindo 426 milhões. Pela primeira vez na história, haverá mais pessoas com mais de 65 anos do que crianças abaixo dos 5.<sup>[1]</sup></p>
+      <p class="body">Esta não é uma tendência. É uma transformação estrutural que já está a redesenhar sistemas de saúde, modelos de negócio, políticas públicas e padrões de consumo em todo o planeta.</p>
+    </div>
+    <div>
+      <p class="body">A questão central já não é garantir que as pessoas vivam mais — esse problema está em grande medida resolvido. <strong>A questão é garantir que esses anos adicionais sejam vividos com saúde, funcionalidade e autonomia.</strong> É essa a lacuna que define o século XXI.</p>
+      <p class="body">A OCDE revela que nos seus países-membros uma pessoa com 65 anos pode hoje esperar viver mais 20 anos. Desde 1970, a esperança de vida aos 65 aumentou cerca de seis anos. A segunda metade da vida tornou-se um campo económico e social decisivo — e o sistema de saúde ainda não se organizou para ela.<sup>[4]</sup></p>
+    </div>
+  </div>
+
+  <div class="trio">
+    <div class="trio-c"><div class="trio-lbl">O que já era suficiente</div><div class="trio-term">Lifespan</div><div class="trio-def">Duração total da vida. Mantém relevância demográfica e atuarial, mas tornou-se insuficiente para capturar o desafio real. Ganhámos anos — a questão é o que estamos a fazer com eles.</div></div>
+    <div class="trio-c hl"><div class="trio-lbl">O verdadeiro desafio</div><div class="trio-term">Healthspan</div><div class="trio-def">O período de vida vivido com saúde, funcionalidade e autonomia. É a métrica que reorienta todo o sistema — da gestão de doença para a preservação de capacidade ao longo da vida. O intervalo entre lifespan e healthspan é onde está o problema — e a oportunidade.</div></div>
+    <div class="trio-c"><div class="trio-lbl">A agenda transversal</div><div class="trio-term">Longevidade</div><div class="trio-def">Campo que articula viver mais, viver melhor e reorganizar sistemas para sociedades longevas. Atravessa saúde, economia, urbanismo, tecnologia e finanças. Não é nicho de bem-estar — é nova camada estrutural do healthcare.</div></div>
+  </div>
+  <span class="src">Fonte conceptual: OMS — Ageing and Health, 2025; WHO Healthy Ageing and Functional Ability; OECD Health at a Glance, 2025. <span class="tier t1">Oficial</span></span>
+
+  <div class="divider"></div>
+  <div class="bridge">Se a primeira fase da longevidade foi demográfica — uma conquista de saúde pública —, a segunda está a ser económica e sistémica: o mercado começa a transformar anos adicionais de vida em novas categorias de produto, serviço e investimento. Mas a escala dessa transformação depende de uma arquitectura de suporte, não de produtos isolados.</div>
+
+  <h3 class="sub">O mercado que cresceu para ~$29 mil milhões</h3>
+  <p class="body">Estimativas de múltiplas fontes independentes apontam para um setor global de longevidade na ordem dos <strong>$29 mil milhões em 2026</strong>, com projeções de crescimento anual entre 8% e 12% até 2036. O mercado inclui diagnóstico, terapêutica, clínicas, software, dispositivos e suplementos com base científica.<sup>[12]</sup> <span class="tier t2">Estimativa setorial</span></p>
+  <p class="body">Segundo dados de rondas de financiamento publicamente anunciadas, o <strong>primeiro trimestre de 2026</strong> registou o volume mais elevado dos últimos quatro anos — confirmando o interesse crescente de capital de risco e de grandes grupos industriais pelo setor.<sup>[12]</sup> <span class="tier t2">Estimativa setorial</span></p>
+
+  <div style="margin:1.5rem 0">
+    <div class="invest-chart">
+      <div class="ic-bar-wrap"><div class="ic-col" style="background:rgba(11,18,33,.2);height:48%"><span class="ic-amt dk">$4,2B</span></div><div class="ic-yr">2022</div></div>
+      <div class="ic-bar-wrap"><div class="ic-col" style="background:rgba(11,18,33,.1);height:8%"><span class="ic-amt dk" style="font-size:.56rem">$0,4B</span></div><div class="ic-yr">2023</div></div>
+      <div class="ic-bar-wrap"><div class="ic-col" style="background:rgba(11,18,33,.18);height:18%"><span class="ic-amt dk">$1,2B</span></div><div class="ic-yr">2024</div></div>
+      <div class="ic-bar-wrap"><div class="ic-col" style="background:rgba(11,18,33,.22);height:24%"><span class="ic-amt dk">$1,7B</span></div><div class="ic-yr">2025</div></div>
+      <div class="ic-bar-wrap"><div class="ic-col hl" style="height:100%"><span class="ic-amt wh">$3,7B<br><span style="font-size:.54rem;font-weight:400;opacity:.8">Q1 2026</span></span></div><div class="ic-yr hl">2026 (Q1)</div></div>
+    </div>
+    <span class="src">Fonte: NewMarketPitch, Longevity Market Report Q1 2026 — dados de rondas de financiamento publicamente anunciadas. <span class="tier t2">Estimativa setorial</span></span>
+  </div>
+
+  <div class="alert">
+    <div class="alert-icon">📌</div>
+    <div>
+      <div class="alert-t">Sinal regulatório — EUA, fevereiro de 2026</div>
+      <div class="alert-b">De acordo com publicação no <em>New England Journal of Medicine</em>, a FDA anunciou que um único ensaio clínico pivotal deverá ser suficiente para aprovação de novos medicamentos. Esta mudança reduz custos e tempo para empresas que desenvolvem terapias em áreas associadas ao envelhecimento. O reconhecimento regulatório de aging como target continua dependente de indicações clínicas específicas, mas o sinal de abertura é relevante para o setor.<sup>[12]</sup> <span class="tier t2">Estimativa setorial</span></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ╔══ PARTE II: EUROPA E PORTUGAL ══╗ -->
+<!-- SECTION OPENER 02 -->
+<div class="sec-opener">
+  <div class="sec-opener-deco"><svg width="180" height="180" viewBox="0 0 180 180"><rect x="60" y="0" width="60" height="60" rx="10" fill="currentColor"/><rect x="0" y="64" width="60" height="60" rx="10" fill="currentColor" opacity=".6"/><rect x="60" y="60" width="60" height="60" rx="10" fill="currentColor"/><rect x="120" y="64" width="60" height="60" rx="10" fill="currentColor" opacity=".5"/><rect x="60" y="120" width="60" height="60" rx="10" fill="currentColor" opacity=".4"/></svg></div>
+  <div class="sec-opener-breadcrumb">Secção 02 de 05</div>
+  <div class="sec-opener-body">
+    <div class="sec-opener-num">02</div>
+    <h2 class="sec-opener-title">Europa e<br><em>Portugal</em></h2>
+    <p class="sec-opener-desc">Do epicentro europeu ao laboratório real. Esta secção posiciona Portugal no mapa da longevidade europeia — com os dados que confirmam o paradoxo, as tensões que definem a oportunidade e o readiness score qualitativo do país.</p>
+  </div>
+  <div class="sec-opener-stats">
+    <div class="sec-stat"><div class="sec-stat-n">82<span class="su">,7</span></div><div class="sec-stat-d">esperança de vida<br>ao nascer, Portugal, 2024<span style="opacity:.5;display:block">+1 ano vs. média UE</span></div></div>
+    <div class="sec-stat"><div class="sec-stat-n">24<span class="su">%</span></div><div class="sec-stat-d">da população<br>tem 65+ anos<span style="opacity:.5;display:block">vs. 22% na UE</span></div></div>
+    <div class="sec-stat"><div class="sec-stat-n">33<span class="su">%</span></div><div class="sec-stat-d">dos anos pós-65<br>vividos em boa saúde<span style="opacity:.5;display:block">mulheres · abaixo da média UE</span></div></div>
+    <div></div>
+  </div>
+</div>
+
+
+<div class="wrap">
+  <div class="page-label">European Longevity Hub · The Longevity Gap 2026 · Secção 02</div>
+  <span class="kicker">A Europa envelhece mais depressa do que prepara respostas</span>
+  <h2 class="sh">Portugal não é relevante<br><em>apesar dos seus desafios —<br>é relevante por causa deles</em></h2>
+  <p class="intro">A Europa representa cerca de 28% do mercado global de longevidade, segundo estimativas setoriais. Portugal está no centro geométrico desse desafio: uma das populações mais envelhecidas da UE, esperança de vida acima da média europeia, mas lacunas persistentes na qualidade dos anos adicionais de vida. Esta combinação faz de Portugal um caso de estudo singular.</p>
+
+  <div class="kpi-row">
+    <div class="kpi dk"><div class="kpi-n" style="color:var(--blue-light)">82,7</div><div class="kpi-l">Anos de esperança<br>de vida, 2024<span class="kpi-s">Eurostat / OECD, 2025 · Oficial</span></div></div>
+    <div class="kpi"><div class="kpi-n">24%</div><div class="kpi-l">Pop. com 65+<br>(média UE: 22%)<span class="kpi-s">INE / OECD, 2024 · Oficial</span></div></div>
+    <div class="kpi"><div class="kpi-n">192</div><div class="kpi-l">Idosos por cada<br>100 jovens, 2024<span class="kpi-s">INE Portugal, 2024 · Oficial</span></div></div>
+    <div class="kpi dk"><div class="kpi-n" style="color:rgba(255,140,100,.9)">33%</div><div class="kpi-l">Anos pós-65 vividos<br>em boa saúde (mulheres)<span class="kpi-s">OECD Health Profile, 2025 · Oficial</span></div></div>
+  </div>
+
+  <div class="two">
+    <div>
+      <h3 class="sub">O paradoxo</h3>
+      <p class="body">Em 2024, a esperança de vida ao nascer era de <strong>82,7 anos — cerca de um ano acima da média da UE</strong>. O país ganhou 4,3 anos de esperança de vida desde 2004, avanço superior ao da média europeia.<sup>[2]</sup></p>
+      <p class="body">Mas este sucesso tem uma sombra. Dos mais de 20 anos esperados após os 65, os homens passavam apenas <strong>46% em boa saúde</strong> e as mulheres apenas <strong>33%</strong>, ambos abaixo da média europeia. Apenas 54% da população com 16 ou mais anos se considerava em boa saúde em 2024, contra 68% na média da UE — uma diferença de 14 pontos percentuais.<sup>[2]</sup></p>
+    </div>
+    <div>
+      <h3 class="sub">O testbed</h3>
+      <p class="body"><strong>Portugal é pequeno o suficiente para testar, envelhecido o suficiente para importar e europeu o suficiente para escalar.</strong></p>
+      <p class="body">O SNS oferece cobertura universal e dados relativamente centralizados para estudos longitudinais. Com 5,8 médicos por 1.000 habitantes — 49% acima da média da OCDE (3,9) —, Portugal tem uma base profissional densa para validação clínica. Custos operacionais estimados em 30 a 40% inferiores à Europa do Norte tornam o país competitivo para pilotos de inovação.<sup>[2][10]</sup></p>
+      <div class="insight" style="margin-top:1.5rem">
+        <div class="insight-bar"></div>
+        <div class="insight-body">
+          <div class="insight-label">Insight Estratégico</div>
+          <div class="insight-title">O paradoxo da prevenção em Portugal</div>
+          <div class="insight-text">Portugal gasta 2,3% do total das suas despesas em saúde em prevenção — contra 3,4% na média da OCDE. Tem mais médicos que a maioria, mas investe proporcionalmente menos em evitar que as pessoas fiquem doentes. Este desequilíbrio é, ao mesmo tempo, um diagnóstico e uma oportunidade de mercado.<sup>[2]</sup></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="ct-title">Portugal vs. Europa — os indicadores que sustentam a tese</div>
+  <table class="ct">
+    <thead><tr><th>Indicador</th><th>Portugal</th><th>Média UE / OCDE</th><th>Leitura</th></tr></thead>
+    <tbody>
+      <tr><td>Esperança de vida ao nascer (2024)</td><td>82,7 anos</td><td>81,7 anos (UE)</td><td>Acima da média — o desafio não é a duração, é a qualidade.</td></tr>
+      <tr><td>Proporção 65+ (2024)</td><td>24%</td><td>22% (UE)</td><td>Portugal já vive o futuro demográfico de muitos países europeus.</td></tr>
+      <tr><td>Índice de envelhecimento (2024)</td><td>192,4 idosos / 100 jovens</td><td>~135 (UE)</td><td>Estrutura etária entre as mais desequilibradas da Europa.</td></tr>
+      <tr><td>Anos saudáveis pós-65 — homens</td><td>46% dos anos restantes</td><td>~51% (UE)</td><td>Homens passam mais tempo em má saúde após a reforma do que a média europeia.</td></tr>
+      <tr><td>Anos saudáveis pós-65 — mulheres</td><td>33% dos anos restantes</td><td>~41% (UE)</td><td>Gap crítico. Longevidade feminina em Portugal é, em grande medida, longevidade com limitações.</td></tr>
+      <tr><td>Saúde percebida como boa / muito boa (2024)</td><td>54%</td><td>68% (UE)</td><td>Diferença de 14 p.p. — sinal de saúde subjetiva degradada.</td></tr>
+      <tr><td>Gasto em prevenção (% despesa)</td><td>2,3%</td><td>3,4% (OCDE)</td><td>Subinvestimento persistente apesar da alta densidade médica.</td></tr>
+      <tr><td>Médicos por 1.000 hab.</td><td>5,8</td><td>3,9 (OCDE)</td><td>Paradoxo: mais médicos, menos prevenção — contradição estrutural.</td></tr>
+      <tr><td>Projeção 65+ em 2050</td><td>34% da população</td><td>~30% (UE proj.)</td><td>A pressão demográfica irá intensificar-se. O prazo para agir é agora.</td></tr>
+    </tbody>
+  </table>
+  <span class="src">Fontes: OECD Country Health Profile Portugal, 2025; Eurostat, 2024; INE Portugal, 2024; OECD Health at a Glance, 2025. <span class="tier t1">Dados oficiais</span></span>
+
+  <div class="divider"></div>
+  <h3 class="sub">Esperança de vida — comparação europeia (2023–2024)</h3>
+  <div style="margin:1.5rem 0">
+    <div class="bar-row"><div class="bar-lbl">Suíça <span>83,4 anos (2023)</span></div><div class="bar-track"><div class="bar-fill bf-eu" style="width:97%"></div></div><div class="bar-val">83,4</div></div>
+    <div class="bar-row"><div class="bar-lbl">Itália <span>83,4 anos (2023)</span></div><div class="bar-track"><div class="bar-fill bf-eu" style="width:97%"></div></div><div class="bar-val">83,4</div></div>
+    <div class="bar-row"><div class="bar-lbl">Portugal <span>82,7 anos · 2024</span></div><div class="bar-track"><div class="bar-fill bf-pt" style="width:93%"></div></div><div class="bar-val" style="color:var(--blue)">82,7</div></div>
+    <div class="bar-row"><div class="bar-lbl">França <span>82,4 anos (2023)</span></div><div class="bar-track"><div class="bar-fill bf-eu" style="width:91%"></div></div><div class="bar-val">82,4</div></div>
+    <div class="bar-row"><div class="bar-lbl" style="color:var(--tl-light)">Média UE <span>81,7 anos</span></div><div class="bar-track"><div class="bar-fill bf-eu" style="width:87%;opacity:.2"></div></div><div class="bar-val" style="color:var(--tl-light)">81,7</div></div>
+    <div class="bar-row"><div class="bar-lbl" style="color:var(--tl-light)">Alemanha <span>80,6 anos (2023)</span></div><div class="bar-track"><div class="bar-fill bf-eu" style="width:81%;opacity:.15"></div></div><div class="bar-val" style="color:var(--tl-light)">80,6</div></div>
+  </div>
+  <span class="src">Fonte: Eurostat. Dado de Portugal: 2024; restantes: 2023. <span class="tier t1">Dados oficiais</span></span>
+  <div class="wrap-footer"><div class="wf-left">European Longevity Hub · The Longevity Gap 2026</div><div class="wf-right"><span class="wf-dot"></span>Secção 02 · Europa e Portugal</div></div>
+</div>
+
+
+<!-- ╔══ AS QUATRO TENSÕES ══╗ -->
+<!-- SECTION OPENER TENSÕES -->
+<div class="sec-opener">
+  <div class="sec-opener-breadcrumb">Análise Estratégica — Portugal</div>
+  <div class="sec-opener-body">
+    <div class="sec-opener-num" style="font-size:3rem">—</div>
+    <h2 class="sec-opener-title">As Quatro Tensões que<br><em>Definem a Oportunidade</em></h2>
+    <p class="sec-opener-desc">Mais do que um país envelhecido, Portugal é um país de contradições produtivas. Quatro tensões estruturais — visíveis nos dados, sentidas no terreno — definem onde estão as oportunidades de actuação e investimento.</p>
+  </div>
+</div>
+
+
+<div class="wrap">
+  <span class="kicker">Diagnóstico · Portugal como caso de estudo</span>
+  <h2 class="sh">Não é o envelhecimento<br><em>que define Portugal — são as contradições</em></h2>
+  <p class="intro">Países envelhecem. Portugal, em particular, revela com clareza quatro tensões estruturais que existem em quase toda a Europa — mas que aqui são mais visíveis, mais urgentes e, por isso, mais estratégicas. Cada uma é simultaneamente um diagnóstico e um mapa de oportunidade.</p>
+
+  <div class="tensions-grid">
+    <div class="tension-card">
+      <div class="tension-num">1</div>
+      <div class="tension-lbl">Tensão Demográfica</div>
+      <div class="tension-title">Viver mais vs. viver melhor</div>
+      <div class="tension-poles">
+        <div class="tension-pole">82,7 anos de esperança de vida — acima da média da UE</div>
+        <div class="tension-vs">vs.</div>
+        <div class="tension-pole">Apenas 33–46% dos anos pós-65 vividos em boa saúde</div>
+      </div>
+      <div class="tension-insight">Portugal é bem-sucedido em prolongar a vida. Mas os anos ganhos não foram acompanhados por ganhos proporcionais de qualidade. <em>Reduzir esta lacuna é a agenda central.</em> <span class="src" style="margin-top:.4rem">OECD Country Health Profile Portugal, 2025 · <span class="tier t1">Oficial</span></span></div>
+    </div>
+    <div class="tension-card">
+      <div class="tension-num">2</div>
+      <div class="tension-lbl">Tensão do Sistema de Saúde</div>
+      <div class="tension-title">Mais médicos vs. menos prevenção</div>
+      <div class="tension-poles">
+        <div class="tension-pole">5,8 médicos / 1.000 hab. — acima da média da OCDE (3,9)</div>
+        <div class="tension-vs">vs.</div>
+        <div class="tension-pole">Apenas 2,3% da despesa em saúde alocada à prevenção</div>
+      </div>
+      <div class="tension-insight">Portugal tem os profissionais para uma medicina preventiva de qualidade. Mas o modelo de financiamento remunera o tratamento, não a prevenção. <em>A infraestrutura humana existe; falta a infraestrutura de incentivos.</em> <span class="src" style="margin-top:.4rem">OECD, 2025 · <span class="tier t1">Oficial</span></span></div>
+    </div>
+    <div class="tension-card">
+      <div class="tension-num">3</div>
+      <div class="tension-lbl">Tensão de Mercado</div>
+      <div class="tension-title">Urgência demográfica vs. mercado ainda incipiente</div>
+      <div class="tension-poles">
+        <div class="tension-pole">Uma das populações mais envelhecidas da Europa — hoje</div>
+        <div class="tension-vs">vs.</div>
+        <div class="tension-pole">Ainda ausente do mapa de capital de risco em longevidade</div>
+      </div>
+      <div class="tension-insight">A procura real existe hoje. O mercado organizado ainda não chegou — e a distância entre os dois é onde está a oportunidade. Portugal oferece custo de entrada 3–5x inferior a Israel/UK com pressão demográfica equivalente. <em>Quem posicionar agora captura activos que serão progressivamente mais caros de replicar.</em> <span class="src" style="margin-top:.4rem">INE, 2024; análise ELH · <span class="tier t1">Oficial</span> / <span class="tier t3">Análise ELH</span></span></div>
+    </div>
+    <div class="tension-card">
+      <div class="tension-num">4</div>
+      <div class="tension-lbl">Tensão de Ecossistema</div>
+      <div class="tension-title">Peças de qualidade vs. articulação inexistente</div>
+      <div class="tension-poles">
+        <div class="tension-pole">MIA-Portugal, SPML, SNS, PNS 2030, Plano Envelhecimento Ativo, B.Life</div>
+        <div class="tension-vs">vs.</div>
+        <div class="tension-pole">Ecossistema fragmentado; as peças não conversam entre si</div>
+      </div>
+      <div class="tension-insight">Portugal tem investigação, política pública, clínicas emergentes e talento. Mas um ecossistema de longevidade não é a soma das partes — é a qualidade das conexões entre elas. <em>A articulação é o ingrediente que falta.</em> <span class="src" style="margin-top:.4rem">Análise ELH · <span class="tier t3">Análise ELH</span></span></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <h3 class="sub">Portugal Readiness Score — Leitura Qualitativa</h3>
+  <p class="body" style="margin-bottom:1.5rem">Uma avaliação qualitativa da prontidão de Portugal para desenvolver e escalar soluções de longevidade, com base nos dados e análises deste report. Os níveis são analíticos, não quantitativos.</p>
+  <table class="rt">
+    <thead><tr><th>Dimensão</th><th>Prontidão</th><th>O que explica o nível</th><th>O que limita</th></tr></thead>
+    <tbody>
+      <tr><td>Pressão demográfica</td><td><span class="rs-badge rs-high">Alta</span></td><td class="rs-note">24% da pop. com 65+; índice de envelhecimento de 192; projeção de 34% em 2050</td><td class="rs-note">—</td></tr>
+      <tr><td>Infraestrutura de saúde pública</td><td><span class="rs-badge rs-med">Média / Alta</span></td><td class="rs-note">SNS universal; cobertura alargada; dados relativamente centralizados</td><td class="rs-note">Pressão financeira crescente; integração digital limitada</td></tr>
+      <tr><td>Base científica e académica</td><td><span class="rs-badge rs-high">Alta</span></td><td class="rs-note">MIA-Portugal (primeiro instituto sul-europeu de aging biology); universidades ativas; SPML</td><td class="rs-note">Translação ciência → mercado ainda incipiente</td></tr>
+      <tr><td>Talento clínico e médico</td><td><span class="rs-badge rs-high">Alta</span></td><td class="rs-note">5,8 médicos / 1.000 hab. — 49% acima da média OCDE</td><td class="rs-note">Formação em medicina da longevidade ainda em desenvolvimento</td></tr>
+      <tr><td>Mercado privado e inovação</td><td><span class="rs-badge rs-med">Emergente</span></td><td class="rs-note">Clínicas especializadas a surgir; ecossistema de startups em crescimento</td><td class="rs-note">Pouco escalado; ausência de casos de referência internacional</td></tr>
+      <tr><td>Capital de risco e investimento</td><td><span class="rs-badge rs-low">Baixo / Médio</span></td><td class="rs-note">Fundos ativos no espaço de saúde; atenção crescente ao tema</td><td class="rs-note"><strong style="color:var(--orange)">First Mover Window:</strong> Portugal não identificado como polo — exactamente o que cria a maior janela de oportunidade. Custo de entrada 3–5x inferior a Israel/UK. Ecossistema em formação = posições estratégicas ainda acessíveis.</td></tr>
+      <tr><td>Coordenação de ecossistema</td><td><span class="rs-badge rs-low">Baixa / Média</span></td><td class="rs-note">Plano de ação público; redes internacionais (OMS); ELH como articulador emergente</td><td class="rs-note">Ecossistema fragmentado; peças excelentes sem conexão eficaz entre si</td></tr>
+    </tbody>
+  </table>
+  <span class="src">Leitura qualitativa: OECD Country Health Profile Portugal, 2025; INE, 2024; Governo de Portugal, 2024; análise proprietária ELH. <span class="tier t1">Oficial</span> / <span class="tier t3">Análise ELH</span></span>
+  <div class="wrap-footer"><div class="wf-left">European Longevity Hub · The Longevity Gap 2026</div><div class="wf-right"><span class="wf-dot"></span>Análise Estratégica · Portugal Readiness Score</div></div>
+</div>
+
+
+<!-- ╔══ PARTE III: ATORES ══╗ -->
+<!-- SECTION OPENER 03 -->
+<div class="sec-opener">
+  <div class="sec-opener-deco"><svg width="160" height="160" viewBox="0 0 160 160"><rect x="56" y="0" width="48" height="48" rx="9" fill="currentColor"/><rect x="0" y="56" width="48" height="48" rx="9" fill="currentColor" opacity=".7"/><rect x="56" y="56" width="48" height="48" rx="9" fill="currentColor"/><rect x="112" y="56" width="48" height="48" rx="9" fill="currentColor" opacity=".6"/><rect x="56" y="112" width="48" height="48" rx="9" fill="currentColor" opacity=".5"/></svg></div>
+  <div class="sec-opener-breadcrumb">Secção 03 de 05</div>
+  <div class="sec-opener-body">
+    <div class="sec-opener-num">03</div>
+    <h2 class="sec-opener-title">Longevidade para<br><em>os Atores do Sistema</em></h2>
+    <p class="sec-opener-desc">A palavra longevidade significa coisas diferentes para quem atua em farmacêuticas, hospitais, operadoras, setor público, clínicas, prática médica e na vida dos pacientes. Esta secção mapeia a convergência — e o que muda para cada um.</p>
+  </div>
+  <div class="sec-opener-stats">
+    <div class="sec-stat"><div class="sec-stat-n">7</div><div class="sec-stat-d">atores mapeados<br>com leitura própria<span style="opacity:.5;display:block">do conceito de longevidade</span></div></div>
+    <div class="sec-stat"><div class="sec-stat-n">1</div><div class="sec-stat-d">transição comum<br>a todos os atores<span style="opacity:.5;display:block">sick care → well care</span></div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+
+<div class="wrap">
+  <div class="page-label">European Longevity Hub · The Longevity Gap 2026 · Secção 03</div>
+  <span class="kicker">Perspetivas · Convergências · A transição de paradigma</span>
+  <h2 class="sh">Longevidade não é<br><em>um conceito único</em></h2>
+  <p class="intro">A palavra longevidade é usada pelo diretor de um hospital, pelo CEO de uma farmacêutica, por um médico de família e por um paciente — e raramente significa a mesma coisa para cada um. Mas há um fio comum que une todas estas perspetivas. Identificá-lo é a condição para construir soluções que realmente funcionem em conjunto.</p>
+
+  <h3 class="sub">O que une todos os atores: a mesma transição, por caminhos diferentes</h3>
+  <p class="body" style="margin-bottom:1.5rem">Por diferentes urgências e vocabulários, todos os atores do ecossistema navegam a mesma transição fundamental: de um modelo reativo e centrado na doença para um modelo preventivo centrado no curso de vida. O infográfico seguinte mostra como essa transição se traduz, de forma concreta, para cada ator.</p>
+
+  <div class="paradigm-wrap">
+    <div class="paradigm-header">
+      <div class="ph-blank"></div>
+      <div class="ph-label ph-old">Modelo Tradicional</div>
+      <div class="ph-label ph-new">Paradigma da Longevidade</div>
+    </div>
+    <div class="paradigm-row"><div class="pr-actor"><div class="pr-actor-lbl">Indústria</div><div class="pr-actor-name">Farmacêutica</div></div><div class="pr-old">Blockbusters para episódios agudos; tratar a doença quando se manifesta</div><div class="pr-new"><div class="pr-new-inner">Pipeline preventivo; terapias de gestão crónica e biomarcadores de envelhecimento como targets</div></div></div>
+    <div class="paradigm-row"><div class="pr-actor"><div class="pr-actor-lbl">Assistência</div><div class="pr-actor-name">Hospital</div></div><div class="pr-old">Resposta a internamentos e urgências; lógica de episódio isolado</div><div class="pr-new"><div class="pr-new-inner">Redução de readmissões; gestão longitudinal da multimorbidade; coordenação de crónicos</div></div></div>
+    <div class="paradigm-row"><div class="pr-actor"><div class="pr-actor-lbl">Financiamento</div><div class="pr-actor-name">Operadora</div></div><div class="pr-old">Pagar tratamentos; horizonte de curto prazo; visão de sinistralidade imediata</div><div class="pr-new"><div class="pr-new-inner">Investir em prevenção longitudinal; demonstrar impacto a médio prazo; mitigar risco biológico</div></div></div>
+    <div class="paradigm-row"><div class="pr-actor"><div class="pr-actor-lbl">Política</div><div class="pr-actor-name">Setor Público</div></div><div class="pr-old">Gerir o sistema de tratamento; pressão crescente de custos e dependência demográfica</div><div class="pr-new"><div class="pr-new-inner">Sustentabilidade fiscal via healthspan; cuidado comunitário; compra pública de soluções de escala</div></div></div>
+    <div class="paradigm-row"><div class="pr-actor"><div class="pr-actor-lbl">Clínica privada</div><div class="pr-actor-name">Clínica</div></div><div class="pr-old">Consulta pontual; diagnóstico por sintoma; foco no episódio presente</div><div class="pr-new"><div class="pr-new-inner">Programas de acompanhamento contínuo; diagnóstico precoce; protocolos personalizados</div></div></div>
+    <div class="paradigm-row"><div class="pr-actor"><div class="pr-actor-lbl">Prática clínica</div><div class="pr-actor-name">Médico</div></div><div class="pr-old">Gestão de sintomas por especialidade; medicina fragmentada em episódios</div><div class="pr-new"><div class="pr-new-inner">Trajetória longitudinal do doente; suporte à decisão com biomarcadores; abordagem integrativa</div></div></div>
+    <div class="paradigm-row"><div class="pr-actor"><div class="pr-actor-lbl">Destinatário</div><div class="pr-actor-name">Paciente</div></div><div class="pr-old">Receptor passivo de cuidado; reage à doença; depende do sistema para se informar</div><div class="pr-new"><div class="pr-new-inner">Agente ativo da própria saúde; previne antes do sintoma; toma decisões informadas ao longo da vida</div></div></div>
+  </div>
+  <span class="src">Referência: ELH Scientific Advisory Board — Definição, Conceito e Taxonomia de Longevidade v3, Abril/Maio 2026. <span class="tier t3">Tese proprietária ELH</span></span>
+
+  <div class="pq" style="margin-top:2rem"><p>"A maioria das pessoas não pensa em longevidade até sentir que a perdeu. O sistema intervém tarde e de forma fragmentada. A longevidade como campo de saúde existe para inverter esta sequência."</p></div>
+
+  <div class="divider"></div>
+  <div class="stake-grid">
+    <div class="stake"><div class="stake-lbl">Farmacêutica</div><div class="stake-name">O pipeline que está a mudar</div><div class="stake-body">Para o setor farmacêutico, o envelhecimento reorienta o pipeline: da especialização em doenças isoladas para a gestão de multimorbidade, polifarmácia e prevenção de declínio funcional. A oportunidade não é apenas a nova molécula: é o modelo de parceria com clínicas de longevidade para validação em ambiente real.<sup>[8]</sup></div><div class="tag-row"><span class="tag">Pipeline preventivo</span><span class="tag">Polifarmácia</span><span class="tag">Geroterapêuticos</span></div></div>
+    <div class="stake alt"><div class="stake-lbl">Hospital</div><div class="stake-name">Da urgência à trajetória</div><div class="stake-body">Para os hospitais, o envelhecimento agrava a pressão sobre urgências e readmissões. A longevidade exige dois imperativos: reduzir internamentos evitáveis através de coordenação da cronicidade, e construir modelos assistenciais para uma população com múltiplas condições simultâneas.<sup>[5][8]</sup></div><div class="tag-row"><span class="tag">Readmissões evitáveis</span><span class="tag">Gestão de crónicos</span><span class="tag">Coordenação</span></div></div>
+    <div class="stake"><div class="stake-lbl">Operadora de Saúde</div><div class="stake-name">A contradição estrutural</div><div class="stake-body">Para operadoras, a longevidade levanta uma contradição: o modelo favorece o tratamento em detrimento da prevenção, mas o envelhecimento da base de beneficiários pressiona custos de forma crescente. Justificar investimento preventivo com evidência de impacto a médio prazo é o desafio central.<sup>[6][8]</sup></div><div class="tag-row"><span class="tag">Gestão de risco</span><span class="tag">Prevenção longitudinal</span><span class="tag">Sinistralidade</span></div></div>
+    <div class="stake alt"><div class="stake-lbl">Setor Público / SNS</div><div class="stake-name">Sustentabilidade em jogo</div><div class="stake-body">Para o sistema público, o envelhecimento é simultaneamente conquista e pressão crescente. A OCDE avalia que só ampliando os anos de vida saudável se consegue conter o crescimento dos gastos a longo prazo. A razão de dependência de idosos em Portugal deverá quase dobrar até 2050.<sup>[7][1]</sup></div><div class="tag-row"><span class="tag">Sustentabilidade fiscal</span><span class="tag">Cuidado longa duração</span><span class="tag">SNS</span></div></div>
+    <div class="stake full"><div class="stake-lbl">O destinatário final — e o mais ignorado pelo sistema</div><div class="stake-name">Paciente</div><div class="stake-body">Para o paciente — o único ator que existe em todos os outros quadrantes —, longevidade significa acima de tudo <strong>agência</strong>: a capacidade de tomar decisões informadas sobre a própria saúde antes que os problemas se manifestem. O sistema foi construído para responder à doença — não para cultivar a saúde. Qualquer solução que não chegue efetivamente ao indivíduo permanece incompleta.<sup>[9][8]</sup></div><div class="tag-row"><span class="tag">Agência individual</span><span class="tag">Literacia em saúde</span><span class="tag">Prevenção ativa</span><span class="tag">Qualidade de vida</span></div></div>
+  </div>
+
+  <div class="quotes-wrap">
+    <div class="q-header">Vozes do Ecossistema · 1 / 3 — A integrar com declarações confirmadas</div>
+    <div class="q-grid">
+      <div class="q-card"><div class="q-pending">A confirmar</div><span class="q-mark">"</span><div class="q-text">Espaço reservado para declaração de Carla Pontes sobre o que significa longevidade no contexto da CUF e qual a abordagem clínica e estratégica que está a ser construída internamente.</div><div class="q-by">Carla Pontes<span class="q-role">Head de Longevidade, CUF</span></div></div>
+      <div class="q-card"><div class="q-pending">A confirmar</div><span class="q-mark">"</span><div class="q-text">Espaço reservado para declaração do Prof. Adalberto sobre a política pública de saúde perante o envelhecimento e o que ainda falta construir para que o sistema responda à dimensão real do desafio demográfico.</div><div class="q-by">Prof. Adalberto<span class="q-role">Ex-Ministro da Saúde</span></div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ╔══ PARTE IV: O QUE ESTÁ SENDO CONSTRUÍDO ══╗ -->
+<!-- SECTION OPENER 04 -->
+<div class="sec-opener">
+  <div class="sec-opener-deco"><svg width="160" height="160" viewBox="0 0 160 160"><rect x="56" y="0" width="48" height="48" rx="9" fill="currentColor"/><rect x="0" y="56" width="48" height="48" rx="9" fill="currentColor" opacity=".7"/><rect x="56" y="56" width="48" height="48" rx="9" fill="currentColor"/><rect x="112" y="56" width="48" height="48" rx="9" fill="currentColor" opacity=".6"/><rect x="56" y="112" width="48" height="48" rx="9" fill="currentColor" opacity=".5"/></svg></div>
+  <div class="sec-opener-breadcrumb">Secção 04 de 05</div>
+  <div class="sec-opener-body">
+    <div class="sec-opener-num">04</div>
+    <h2 class="sec-opener-title">O que Está Sendo<br><em>Construído</em></h2>
+    <p class="sec-opener-desc">Do ecossistema global ao terreno português. Esta secção mapeia as startups por grau de maturidade, as iniciativas nacionais em curso e o papel do ELH como articulador de um ecossistema fragmentado.</p>
+  </div>
+  <div class="sec-opener-stats">
+    <div class="sec-stat"><div class="sec-stat-n">3</div><div class="sec-stat-d">níveis de maturidade<br>no ecossistema global<span style="opacity:.5;display:block">validado / emergente / fronteira</span></div></div>
+    <div class="sec-stat"><div class="sec-stat-n">6</div><div class="sec-stat-d">iniciativas identificadas<br>em Portugal<span style="opacity:.5;display:block">política · ciência · clínica</span></div></div>
+    <div class="sec-stat"><div class="sec-stat-n">+58</div><div class="sec-stat-d">leads no pipeline<br>do ELH, 2026<span style="opacity:.5;display:block">1 aprovado · processo rigoroso</span></div></div>
+    <div></div>
+  </div>
+</div>
+
+
+<div class="wrap">
+  <div class="page-label">European Longevity Hub · The Longevity Gap 2026 · Secção 04</div>
+  <span class="kicker">Startups · Iniciativas · Ecossistema</span>
+  <h2 class="sh">Da ideia à<br><em>infraestrutura real</em></h2>
+  <p class="intro">O mercado de longevidade não é um conceito em construção — é um setor com produtos, clínicas, plataformas e investimento a escalar globalmente. Portugal tem um ecossistema incipiente mas promissor. O desafio não é a ausência de peças — é a sua articulação.</p>
+
+  <div class="bridge">O ecossistema global de longevidade organiza-se em três níveis de maturidade distintos: soluções já validadas e em escala comercial, tecnologias emergentes com tração crescente, e intervenções na fronteira científica que aguardam validação clínica mais alargada. Ler estes três níveis em conjunto — e não como um bloco homogéneo — é essencial para quem quer posicionar-se neste mercado com rigor.</div>
+
+  <h3 class="sub" style="margin-bottom:1.75rem">O ecossistema global organizado por maturidade</h3>
+
+  <div class="maturity-tier">
+    <div class="maturity-header"><span class="maturity-badge mb-validated">Mercado Validado e em Escala</span><span class="maturity-desc">Produtos com modelo de negócio comprovado, base de clientes em crescimento e receita recorrente. Menor risco de execução.</span></div>
+    <div class="startup-grid">
+      <div class="scard"><div class="scard-icon">🧪</div><div class="scard-cat">Diagnóstico / Biomarcadores</div><div class="scard-name">Plataformas de Idade Biológica</div><div class="scard-body">Medem a idade biológica real, rastreiam risco e orientam intervenções personalizadas. Maior categoria em volume de utilizadores; crescimento acelerado por democratização para rendimento médio.</div><div class="scard-cos"><strong>Exemplos:</strong> Function Health (~$298M, Q4 2025); InsideTracker; TruDiagnostic; GlycanAge (~$8,7M Series A, 2025)</div></div>
+      <div class="scard"><div class="scard-icon">⌚</div><div class="scard-cat">Dispositivos / Wearables</div><div class="scard-name">Monitorização Contínua</div><div class="scard-body">Wearables que transformam sinais fisiológicos em orientação para longevidade. Principal porta de entrada para o grande público; gera dados para ecossistemas mais complexos.</div><div class="scard-cos"><strong>Exemplos:</strong> Oura (~$200M, Q4 2024); WHOOP. Dados: rondas publicamente anunciadas.</div></div>
+      <div class="scard"><div class="scard-icon">🏥</div><div class="scard-cat">Clínicas de Longevidade</div><div class="scard-name">Centros de Saúde Longitudinal</div><div class="scard-body">Combinam diagnóstico avançado, supervisão médica e programas personalizados em modelos de membership recorrente. Pioneiras em dados longitudinais em escala real.</div><div class="scard-cos"><strong>Exemplos:</strong> Fountain Life (dados de +15B pontos clínicos divulgados, Jan. 2026); Human Longevity Inc. <strong>Portugal:</strong> B.Life Longevity Clinic, Cascais.</div></div>
+    </div>
+  </div>
+
+  <div class="maturity-tier">
+    <div class="maturity-header"><span class="maturity-badge mb-emerging">Mercado Emergente com Tração</span><span class="maturity-desc">Categorias com tração crescente, a definir modelos de monetização estáveis ou a aguardar validação clínica mais alargada. Maior potencial de crescimento relativo.</span></div>
+    <div class="startup-grid">
+      <div class="scard"><div class="scard-icon">📱</div><div class="scard-cat">Software / Coaching de Healthspan</div><div class="scard-name">Plataformas de Orientação Longitudinal</div><div class="scard-body">Integram dados de laboratório, wearables e coaching em orientação personalizada e contínua. Alta escalabilidade; cria camada de retenção para outros produtos do ecossistema.</div><div class="scard-cos"><strong>Exemplos:</strong> Human Longevity (app contínuo, Fev. 2026); Tolion Health AI; InsideTracker</div></div>
+      <div class="scard"><div class="scard-icon">💊</div><div class="scard-cat">Suplementos com Base Científica</div><div class="scard-name">Intervenções Metabólicas e Celulares</div><div class="scard-body">Produtos centrados em saúde celular com mecanismos de ação documentados. Mercado desbloqueado após regularização do NMN nos EUA (Set. 2025).</div><div class="scard-cos"><strong>Exemplos:</strong> NOVOS (RCT publicado, 2026); DoNotAge. NAD+ estimado em $3,45B do mercado global. <span class="tier t2" style="vertical-align:baseline">Estimativa</span></div></div>
+      <div class="scard"><div class="scard-icon">🧬</div><div class="scard-cat">Terapêutica — Fase Intermediária</div><div class="scard-name">Senolytics e Modulação Metabólica</div><div class="scard-body">Medicamentos que atuam sobre mecanismos de envelhecimento reconhecidos. Evidência em ensaios de Fase 1/2; caminho regulatório com mais clareza após 2026.</div><div class="scard-cos"><strong>Exemplos:</strong> Rubedo Life Sciences; BioAge Labs; Aeovian Pharmaceuticals (~$55M Series B, Dez. 2025)</div></div>
+    </div>
+  </div>
+
+  <div class="maturity-tier">
+    <div class="maturity-header"><span class="maturity-badge mb-frontier">Fronteira Científica</span><span class="maturity-desc">Potencial transformador mas em fase pré-clínica ou ensaios iniciais em humanos. Horizonte de impacto de 5 a 15 anos; risco científico significativo.</span></div>
+    <div class="startup-grid">
+      <div class="scard"><div class="scard-icon">🔬</div><div class="scard-cat">Reprogramação Celular</div><div class="scard-name">Rejuvenescimento Biológico</div><div class="scard-body">Plataformas que procuram reprogramar células envelhecidas para estados mais jovens, revertendo danos ao nível epigenético. Maior risco; maior potencial a longo prazo.</div><div class="scard-cos"><strong>Exemplos:</strong> Altos Labs ($3B, 2022); Retro Biosciences ($1B, 2025); NewLimit; Life Biosciences (clearance FDA ER-100, 2026)</div></div>
+      <div class="scard"><div class="scard-icon">🧫</div><div class="scard-cat">Medicina Regenerativa</div><div class="scard-name">Reparação Celular e Tecidual</div><div class="scard-body">Terapias que visam a restauração de tecidos afetados pelo envelhecimento. Fase predominantemente pré-clínica ou ensaios iniciais.</div><div class="scard-cos"><strong>Exemplos:</strong> Junevity ($20M seed total); Amphix Bio (~$12,5M seed, Dez. 2025)</div></div>
+      <div class="scard"><div class="scard-icon">🤖</div><div class="scard-cat">IA na Descoberta de Fármacos</div><div class="scard-name">Plataformas de Drug Discovery</div><div class="scard-body">Sistemas de IA que aceleram a identificação de novos targets e o design de candidatos terapêuticos. Validação clínica permanece necessária.</div><div class="scard-cos"><strong>Exemplos:</strong> Insilico Medicine; Gero; BioAge Labs. Categoria em fase de validação de outputs clínicos.</div></div>
+    </div>
+  </div>
+  <span class="src">Fontes: NewMarketPitch Q1 2026; TechCrunch; Business Wire; PR Newswire; Longevity.Technology; Life Biosciences (comunicado institucional). Valores de rondas são estimativos e baseados em anúncios públicos. <span class="tier t2">Estimativa setorial</span></span>
+
+  <div class="divider"></div>
+  <h3 class="sub">O que está a ser construído em Portugal</h3>
+  <div class="bridge">Portugal não tem (ainda) um ecossistema de longevidade com a escala dos EUA ou da Suíça. Mas tem algo diferente — e talvez mais valioso para quem quer construir com substância: as condições reais para fazer funcionar soluções em contexto de sistema universal de saúde, com uma população que envelhece rapidamente e uma base científica e clínica em formação.</div>
+
+  <div class="init-grid">
+    <div class="icard"><div class="icard-icon ig">📋</div><div class="icard-lbl">Política Pública</div><div class="icard-title">Plano de Ação Envelhecimento Ativo e Saudável 2023–2026</div><div class="icard-body">Aprovado em janeiro de 2024. Inclui 83 medidas e 135 atividades em seis pilares, com foco na preparação da sociedade para o envelhecimento e na qualidade de vida das pessoas mais velhas.</div><span class="icard-src">Governo de Portugal, 2024 · <span class="tier t1" style="vertical-align:baseline">Oficial</span></span></div>
+    <div class="icard"><div class="icard-icon ig">🏥</div><div class="icard-lbl">Política Pública</div><div class="icard-title">Plano Nacional de Saúde 2030</div><div class="icard-body">Incorpora o envelhecimento ativo como prioridade estratégica do SNS, integrando a agenda de longevidade na planificação de longo prazo do sistema público de saúde.</div><span class="icard-src">Direção-Geral da Saúde, 2021 · <span class="tier t1" style="vertical-align:baseline">Oficial</span></span></div>
+    <div class="icard"><div class="icard-icon igo">🔬</div><div class="icard-lbl">Investigação Científica</div><div class="icard-title">MIA-Portugal — Universidade de Coimbra</div><div class="icard-body">Primeiro instituto do sul da Europa dedicado ao estudo das bases moleculares e biológicas do envelhecimento. Conecta ciência translacional com políticas de saúde e inovação de mercado.</div><span class="icard-src">MIA-Portugal / UC Coimbra · <span class="tier t1" style="vertical-align:baseline">Oficial</span></span></div>
+    <div class="icard"><div class="icard-icon ig">🩺</div><div class="icard-lbl">Prática Clínica</div><div class="icard-title">B.Life Longevity Clinic, Cascais</div><div class="icard-body">Cofundada pela Dra. Joana Costa — presidente da SPML e com formação em Lifestyle Medicine por Harvard —, é uma das primeiras clínicas portuguesas dedicadas inteiramente à medicina da longevidade.</div><span class="icard-src">SPML / ELH · <span class="tier t3" style="vertical-align:baseline">Fonte ELH</span></span></div>
+    <div class="icard"><div class="icard-icon igo">🎓</div><div class="icard-lbl">Sociedade Científica</div><div class="icard-title">Soc. Portuguesa de Medicina e Ciência da Longevidade</div><div class="icard-body">Organiza a produção e disseminação de conhecimento em medicina da longevidade em Portugal, formando profissionais para uma prática baseada em evidência.</div><span class="icard-src">SPML · <span class="tier t1" style="vertical-align:baseline">Institucional</span></span></div>
+    <div class="icard"><div class="icard-icon in">🌐</div><div class="icard-lbl">Rede Internacional OMS</div><div class="icard-title">Programa Nacional — Cidades Amigas das Pessoas Idosas</div><div class="icard-body">Portugal aderiu à Rede Global OMS de Cidades Amigas das Pessoas Idosas. O programa abrange mobilidade, habitação e participação social — determinantes diretos da autonomia na velhice.</div><span class="icard-src">DGS / WHO Age-Friendly World · <span class="tier t1" style="vertical-align:baseline">Oficial</span></span></div>
+  </div>
+
+  <div class="divider"></div>
+  <h3 class="sub">Do diagnóstico à atuação — o papel do ELH em cada nó do ecossistema</h3>
+  <p class="body" style="margin-bottom:1.5rem">O report mostrou os problemas. A tabela seguinte torna explícita a ponte entre cada diagnóstico, a oportunidade emergente e o papel específico de um articulador de ecossistema.<sup>[8][18]</sup> <span class="tier t3">Tese proprietária ELH</span></p>
+
+  <div class="matrix-wrap">
+    <div class="matrix-header">
+      <div class="mh-cell">Problema Estrutural</div>
+      <div class="mh-cell">Oportunidade Emergente</div>
+      <div class="mh-cell hl">Papel do ELH</div>
+    </div>
+    <div class="matrix-row"><div class="mc-problem">Portugal vive mais, mas com menos anos saudáveis — especialmente mulheres pós-65</div><div class="mc-opp">Programas de prevenção funcional e healthspan com evidência real</div><div class="mc-elh">Curar, validar e conectar soluções de prevenção com contexto clínico real</div></div>
+    <div class="matrix-row"><div class="mc-problem">Subinvestimento em prevenção (2,3% vs 3,4% OCDE) apesar da alta densidade médica</div><div class="mc-opp">Novos modelos de financiamento preventivo e value-based care</div><div class="mc-elh">Aproximar pagadores, provedores e startups em torno de evidência de impacto</div></div>
+    <div class="matrix-row"><div class="mc-problem">Ecossistema fragmentado — peças de qualidade sem conexão eficaz</div><div class="mc-opp">Necessidade urgente de coordenação entre ciência, clínica, capital e política</div><div class="mc-elh">Atuar como plataforma de orquestração — os encontros que o mercado não cria sozinho</div></div>
+    <div class="matrix-row"><div class="mc-problem">Dados de saúde disponíveis mas dispersos; ausência de evidência real-world sistematizada</div><div class="mc-opp">Infraestrutura de dados para validação clínica e atração de capital</div><div class="mc-elh">Construir agenda de validação e indicadores de healthspan com parceiros reais</div></div>
+    <div class="matrix-row"><div class="mc-problem">Portugal ausente do mapa de capital de risco global em longevidade</div><div class="mc-opp">Posicionamento como testbed europeu de referência para pilotos de inovação</div><div class="mc-elh">Traduzir a narrativa de Portugal junto de investidores e parceiros internacionais</div></div>
+    <div class="matrix-row"><div class="mc-problem">Translação ciência → mercado ainda incipiente em Portugal</div><div class="mc-opp">Parcerias entre centros de investigação e indústria para validação e escala</div><div class="mc-elh">Conectar MIA-Portugal, SPML e universidades com startups, farmacêuticas e fundos</div></div>
+  </div>
+
+  <!-- ELH BOX -->
+  <div class="elh-box">
+    <div class="elh-box-deco">
+      <svg width="160" height="160" viewBox="0 0 160 160"><rect x="56" y="0" width="48" height="48" rx="9" fill="currentColor"/><rect x="0" y="56" width="48" height="48" rx="9" fill="currentColor" opacity=".7"/><rect x="56" y="56" width="48" height="48" rx="9" fill="currentColor"/><rect x="112" y="56" width="48" height="48" rx="9" fill="currentColor" opacity=".6"/><rect x="56" y="112" width="48" height="48" rx="9" fill="currentColor" opacity=".5"/></svg>
+    </div>
+    <div class="elh-kicker">European Longevity Hub · Longevidade como Infraestrutura</div>
+    <h3 class="elh-title">A próxima fase não será vencida por soluções isoladas — mas por infraestrutura</h3>
+    <p class="elh-body">O European Longevity Hub parte de uma tese clara: a longevidade não se resolve com produtos pontuais nem com hype anti-aging. Resolve-se com arquitectura de sistema — dados, validação clínica, modelos de cuidado, financiamento de longo prazo e articulação entre atores que raramente falam a mesma língua. Portugal, com o seu ecossistema fragmentado mas promissor, é o território onde essa infraestrutura precisa de ser construída.</p>
+    <p class="elh-body" style="margin-top:.8rem">Com presença em Portugal, Brasil, Reino Unido, Índia e China, o ELH atua como plataforma curatorial: mapeando subsegmentos prioritários, qualificando riscos regulatórios e comerciais, criando os encontros que o mercado não produz por conta própria, e traduzindo a megatendência da longevidade em categorias investíveis e projetos com impacto clínico, organizacional e económico real.</p>
+    <div class="elh-pillars">
+      <div class="elh-p"><div class="elh-p-n">01</div><div class="elh-p-t">Prevenção funcional e estratificação precoce de risco</div></div>
+      <div class="elh-p"><div class="elh-p-n">02</div><div class="elh-p-t">Gestão longitudinal de multimorbidade e polifarmácia</div></div>
+      <div class="elh-p"><div class="elh-p-n">03</div><div class="elh-p-t">Aging in place e modelos de cuidado próximo de casa</div></div>
+      <div class="elh-p"><div class="elh-p-n">04</div><div class="elh-p-t">Tecnologias que ampliam a produtividade do trabalho de cuidado</div></div>
+    </div>
+  </div>
+  <span class="src">ELH — Sumário Executivo da Visão do Fundo em Longevidade, 2026; ELH Scientific Advisory Board, 2026. <span class="tier t3">Tese proprietária ELH</span></span>
+
+  <div class="quotes-wrap">
+    <div class="q-header">Vozes do Ecossistema · 2 / 3 — A integrar com declarações confirmadas</div>
+    <div class="q-grid">
+      <div class="q-card"><div class="q-pending">A confirmar</div><span class="q-mark">"</span><div class="q-text">Espaço reservado para declaração de Bruno Pina sobre o que está a ser construído em Portugal e o papel que o ELH está a desempenhar como articulador do ecossistema de longevidade.</div><div class="q-by">Bruno Pina<span class="q-role">CEO, European Longevity Hub</span></div></div>
+      <div class="q-card"><div class="q-pending">A confirmar</div><span class="q-mark">"</span><div class="q-text">Espaço reservado para declaração de Andrea Lima sobre a visão do Fórum Saúde XXI relativamente ao ecossistema de saúde e longevidade em Portugal e sobre como os grandes atores do sistema podem responder ao desafio demográfico de forma coordenada.</div><div class="q-by">Andrea Lima<span class="q-role">CEO, Fórum Saúde XXI</span></div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ╔══ PARTE V: KPIs ══╗ -->
+<!-- SECTION OPENER 05 -->
+<div class="sec-opener">
+  <div class="sec-opener-deco"><svg width="140" height="140" viewBox="0 0 140 140"><rect x="48" y="0" width="44" height="44" rx="8" fill="currentColor"/><rect x="0" y="48" width="44" height="44" rx="8" fill="currentColor" opacity=".7"/><rect x="48" y="48" width="44" height="44" rx="8" fill="currentColor"/><rect x="96" y="48" width="44" height="44" rx="8" fill="currentColor" opacity=".6"/><rect x="48" y="96" width="44" height="44" rx="8" fill="currentColor" opacity=".5"/></svg></div>
+  <div class="sec-opener-breadcrumb">Secção 05 de 05</div>
+  <div class="sec-opener-body">
+    <div class="sec-opener-num">05</div>
+    <h2 class="sec-opener-title">Indicadores e<br><em>Posicionamento</em></h2>
+    <p class="sec-opener-desc">Os dados de mercado e o posicionamento estratégico de Portugal no contexto europeu de longevidade — com implicações específicas para cada ator do ecossistema.</p>
+  </div>
+  <div class="sec-opener-stats">
+    <div class="sec-stat"><div class="sec-stat-n">2,3<span class="su">%</span></div><div class="sec-stat-d">gasto em prevenção<br>em Portugal<span style="opacity:.5;display:block">vs. 3,4% média OCDE</span></div></div>
+    <div class="sec-stat"><div class="sec-stat-n">€5,7<span class="su">T</span></div><div class="sec-stat-d">Silver Economy<br>europeia, 2025<span style="opacity:.5;display:block">Comissão Europeia</span></div></div>
+    <div></div><div></div>
+  </div>
+</div>
+
+
+<div class="wrap">
+  <div class="page-label">European Longevity Hub · The Longevity Gap 2026 · Secção 05</div>
+  <span class="kicker">Prevenção · Mercado europeu · Silver Economy</span>
+  <h2 class="sh">Portugal tem os números<br><em>mas ainda não tem o mercado</em></h2>
+  <p class="intro">Os dados demográficos de Portugal justificam uma agenda de longevidade urgente. O desafio é que a urgência demográfica ainda não se traduziu em investimento proporcional em prevenção nem num ecossistema de inovação com escala. A distância entre o problema e a resposta é onde está a oportunidade.</p>
+
+  <div class="two">
+    <div>
+      <h3 class="sub">O gap de prevenção</h3>
+      <p class="body">Portugal destina 2,3% do total das suas despesas em saúde à prevenção — contra 3,4% na média da OCDE. Países nórdicos chegam a valores próximos dos 5%. Esta não é apenas uma diferença percentual: é uma escolha estrutural sobre onde o sistema de saúde coloca os seus recursos.<sup>[2]</sup></p>
+      <div style="margin:1.5rem 0">
+        <div class="bar-row"><div class="bar-lbl">Finlândia <span>~5,2%</span></div><div class="bar-track"><div class="bar-fill bf-top" style="width:95%"></div></div><div class="bar-val" style="color:var(--orange)">5,2%</div></div>
+        <div class="bar-row"><div class="bar-lbl">Suécia <span>~4,8%</span></div><div class="bar-track"><div class="bar-fill bf-top" style="width:87%"></div></div><div class="bar-val" style="color:var(--orange)">4,8%</div></div>
+        <div class="bar-row"><div class="bar-lbl">Média OCDE <span>3,4%</span></div><div class="bar-track"><div class="bar-fill bf-eu" style="width:62%"></div></div><div class="bar-val">3,4%</div></div>
+        <div class="bar-row"><div class="bar-lbl">Portugal <span>2,3%</span></div><div class="bar-track"><div class="bar-fill bf-pt" style="width:42%"></div></div><div class="bar-val" style="color:var(--blue)">2,3%</div></div>
+      </div>
+      <span class="src">Fonte: OECD Country Health Profile Portugal, 2025. <span class="tier t1">Dados oficiais</span></span>
+    </div>
+    <div>
+      <h3 class="sub">Silver Economy e a base invisível de tudo</h3>
+      <p class="body">A Silver Economy europeia foi estimada pela Comissão Europeia em €5,7 trilhões para 2025, crescendo cerca de 5% ao ano. Este número inclui habitação, finanças, mobilidade, lazer e consumo — muito além da saúde.<sup>[5]</sup></p>
+      <p class="body">Mas há uma ligação fundamental que os dados de Silver Economy raramente tornam explícita: <strong>a saúde é a base invisível de toda a economia da longevidade</strong>. Sem autonomia, mobilidade e funcionalidade, o potencial económico da longevidade não se realiza. O healthspan não é apenas uma métrica de saúde — é a condição de possibilidade para tudo o resto.</p>
+      <p class="body">A Europa representa cerca de 28% do mercado global de longevidade, segundo estimativas setoriais, com apenas 2% das suas instituições de saúde a investir em medicina regenerativa. Portugal, dentro desta fatia, tem potencial como testbed e plataforma de validação clínica para mercados europeus e de língua portuguesa.<sup>[12]</sup> <span class="tier t2">Estimativa setorial</span></p>
+    </div>
+  </div>
+
+  <div class="quotes-wrap">
+    <div class="q-header">Vozes do Ecossistema · 3 / 3 — A integrar com declarações confirmadas</div>
+    <div class="q-grid">
+      <div class="q-card"><div class="q-pending">A confirmar</div><span class="q-mark">"</span><div class="q-text">Espaço reservado para declaração de Gil sobre como a Unicorn Factory Lisbon enxerga o ecossistema de inovação em longevidade em Portugal e o que seria necessário para que Lisboa se posicione internacionalmente como polo de referência.</div><div class="q-by">Gil<span class="q-role">CEO, Unicorn Factory Lisbon</span></div></div>
+      <div class="q-card"><div class="q-pending">A confirmar</div><span class="q-mark">"</span><div class="q-text">Espaço reservado para declaração da Dra. Joana Costa sobre o estado real da medicina de longevidade em Portugal — a perspectiva de quem fundou a B.Life e dirige a Sociedade Portuguesa de Medicina e Ciência da Longevidade: o que já funciona na clínica, onde está o gap entre o que a ciência permite e o que o sistema financia, e o que falta construir para o próximo patamar do ecossistema nacional.</div><div class="q-by">Dra. Joana Costa<span class="q-role">Presidente, SPML · Co-Fundadora &amp; Directora Clínica, B.Life Longevity Clinic</span></div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ╔══ IMPLICAÇÕES ══╗ -->
+<!-- SECTION OPENER IMPLICAÇÕES -->
+<div class="sec-opener">
+  <div class="sec-opener-breadcrumb">Conclusão Prática</div>
+  <div class="sec-opener-body">
+    <div class="sec-opener-num" style="font-size:3rem">—</div>
+    <h2 class="sec-opener-title">Implicações<br><em>Estratégicas</em></h2>
+    <p class="sec-opener-desc">O panorama é partilhado, mas as implicações são distintas. O que este report significa concretamente para farmacêuticas, hospitais, operadoras, setor público, clínicas, investidores, startups e investigadores.</p>
+  </div>
+</div>
+
+
+<div class="wrap">
+  <span class="kicker">Da leitura à ação</span>
+  <h2 class="sh">Cada ator tem uma<br><em>porta de entrada diferente</em></h2>
+  <p class="intro">O panorama é partilhado. Mas as implicações são distintas consoante o ponto de vista de quem lê. A tabela seguinte traduz os principais diagnósticos e oportunidades deste report em implicações específicas para cada público.</p>
+
+  <div class="impl-grid">
+    <div class="impl-row"><div class="impl-actor"><div class="impl-actor-lbl">Indústria</div><div class="impl-actor-name">Farmacêutica</div></div><div class="impl-text">Explorar pipeline preventivo e biomarcadores de envelhecimento; desenvolver parcerias com clínicas de longevidade para validação em contexto real; mapear unmet needs em multimorbidade e polifarmácia.</div></div>
+    <div class="impl-row"><div class="impl-actor"><div class="impl-actor-lbl">Assistência</div><div class="impl-actor-name">Hospital</div></div><div class="impl-text">Construir modelos de cuidado longitudinal para crónicos; investir em coordenação assistencial que reduza readmissões; explorar parcerias com ecossistema de inovação para pilotos de prevenção.</div></div>
+    <div class="impl-row"><div class="impl-actor"><div class="impl-actor-lbl">Financiamento</div><div class="impl-actor-name">Operadora</div></div><div class="impl-text">Testar modelos de financiamento preventivo com métricas de impacto mensuráveis; usar dados de clínicas de longevidade para justificar investimento preventivo junto da gestão de topo.</div></div>
+    <div class="impl-row"><div class="impl-actor"><div class="impl-actor-lbl">Política</div><div class="impl-actor-name">Governo / SNS</div></div><div class="impl-text">Transformar envelhecimento saudável em política de sustentabilidade fiscal; criar incentivos para prevenção longitudinal; estruturar programas de compra pública de soluções testadas.</div></div>
+    <div class="impl-row"><div class="impl-actor"><div class="impl-actor-lbl">Prática</div><div class="impl-actor-name">Clínica / Médico</div></div><div class="impl-text">Desenvolver protocolos de medicina longitudinal com base em biomarcadores; integrar ferramentas digitais de suporte à decisão; conectar com a SPML e rede científica para formação baseada em evidência.</div></div>
+    <div class="impl-row"><div class="impl-actor"><div class="impl-actor-lbl">Capital</div><div class="impl-actor-name">Investidor</div></div><div class="impl-text">Distinguir mercado validado de fronteira científica; privilegiar soluções com comprador real e integração no fluxo de cuidado; considerar Portugal como testbed de custo competitivo com acesso ao SNS.</div></div>
+    <div class="impl-row"><div class="impl-actor"><div class="impl-actor-lbl">Inovação</div><div class="impl-actor-name">Startup</div></div><div class="impl-text">Validar em contexto real antes de escalar; criar evidência de impacto clínico mensurável; conectar com hospitais, universidades e pagadores para superar o gap entre laboratório e mercado.</div></div>
+    <div class="impl-row"><div class="impl-actor"><div class="impl-actor-lbl">Academia</div><div class="impl-actor-name">Investigador</div></div><div class="impl-text">Acelerar translação ciência → mercado através de parcerias com indústria e startups; posicionar Portugal como polo de validação clínica em aging biology junto da comunidade científica europeia.</div></div>
+  </div>
+</div>
+
+
+
+
+<!-- ╔══ CONTACTO ELH ══╗ -->
+<div class="wrap" style="padding-top:3rem;padding-bottom:3rem">
+  <span class="kicker">European Longevity Hub · Contacto</span>
+  <p class="intro" style="max-width:680px">Para investidores, parceiros estratégicos ou organizações que queiram explorar o ecossistema ELH — pipeline de 58 leads qualificados, acesso first-look a deals e programas de parceria fundacional — o ponto de contacto é Bruno Pina, CEO do ELH.</p>
+  <p style="font-family:'Space Mono',monospace;font-size:.82rem;margin-top:1rem"><a href="mailto:pina@europeanlongevityhub.com" style="color:var(--blue);text-decoration:none">pina@europeanlongevityhub.com</a>&nbsp;&nbsp;·&nbsp;&nbsp;<span style="color:var(--tl-light)">europeanlongevityhub.com</span></p>
+</div>
+
+<!-- ╔══ FECHO ══╗ -->
+<div class="close-wrap">
+  <div class="close-deco">
+    <svg width="250" height="250" viewBox="0 0 250 250"><rect x="88" y="0" width="74" height="74" rx="12" fill="currentColor"/><rect x="0" y="88" width="74" height="74" rx="12" fill="currentColor" opacity=".7"/><rect x="88" y="88" width="74" height="74" rx="12" fill="currentColor"/><rect x="176" y="88" width="74" height="74" rx="12" fill="currentColor" opacity=".6"/><rect x="88" y="176" width="74" height="74" rx="12" fill="currentColor" opacity=".5"/></svg>
+  </div>
+  <div class="close-body">
+    <span class="close-kicker">Considerações Finais</span>
+    <h2 class="close-h">Longevidade como infraestrutura:<br><em>a tese do ELH</em></h2>
+    <p class="close-p">O debate sobre longevidade é rico em promessas e pobre em sistemas. Existe muito ruído — anti-aging de luxo, suplementos sem evidência, promessas de reversão do envelhecimento com horizonte incerto. E existe também um problema real, urgente e de escala populacional: pessoas que vivem mais mas não necessariamente melhor, sistemas de saúde que não foram desenhados para vidas longas, e um mercado que ainda não encontrou a sua linguagem comum.</p>
+    <p class="close-p">A tese do ELH é simples: fechar o intervalo entre lifespan e healthspan não será obra de uma startup, de uma molécula ou de um programa de bem-estar. Será obra de arquitectura de sistema — de dados, de validação clínica, de modelos de cuidado, de financiamento inteligente e, acima de tudo, de articulação entre os atores que hoje operam em silos.</p>
+    <p class="close-p">Portugal não é o cenário perfeito para esta ambição. É algo melhor: é o cenário real. Com os seus paradoxos, as suas tensões e as suas lacunas — e com as condições únicas para transformar o urgente em concreto.</p>
+    <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--bd)">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1.28rem;font-style:italic;color:var(--td-mid);line-height:1.5">"A próxima fronteira da longevidade não será medida apenas por quantos anos ganhámos — mas por quanto desses anos permanecem vivíveis, autónomos e significativos."</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ╔══ REFERÊNCIAS ══╗ -->
+<div class="refs">
+  <div class="refs-inner">
+    <div class="refs-t">Referências e Fontes</div>
+    <div class="refs-grid">
+      <div class="ref">[1] World Health Organization. <em>Ageing and health.</em> Fact Sheet, 2025. who.int</div>
+      <div class="ref">[2] OECD / European Observatory. <em>Portugal — Country Health Profile 2025.</em> OECD Publishing, Paris.</div>
+      <div class="ref">[3] Garmany et al. <em>Healthspan-lifespan gap differs across the world.</em> Communications Medicine, 2025.</div>
+      <div class="ref">[4] OECD. <em>Health at a Glance 2025 — Life expectancy at older ages.</em> OECD Publishing.</div>
+      <div class="ref">[5] European Commission. <em>The Silver Economy — Final Report.</em> 2018 (projeção para 2025).</div>
+      <div class="ref">[6] OECD. <em>The Economic Benefit of Promoting Healthy Ageing and Community Care.</em> 2025.</div>
+      <div class="ref">[7] OECD. <em>Ageing Populations, Their Fiscal Implications and Policy Responses.</em> 2025.</div>
+      <div class="ref">[8] ELH / Scientific Advisory Board. <em>Definição, Conceito e Taxonomia de Longevidade v3.</em> Abril/Maio 2026. <em>[Fonte proprietária ELH]</em></div>
+      <div class="ref">[9] World Health Organization. <em>Healthy Ageing and Functional Ability; UN Decade of Healthy Ageing 2021–2030.</em></div>
+      <div class="ref">[10] ELH Strategic Analysis. <em>Ecosystem Mapping — Portugal Longevity Hub.</em> 2025. <em>[Fonte proprietária ELH]</em></div>
+      <div class="ref">[11] World Economic Forum. <em>Longevity Economy Principles.</em> 2024.</div>
+      <div class="ref">[12] NewMarketPitch. <em>Longevity Market Report — Q1 2026.</em> newmarketpitch.com. <em>[Relatório setorial — estimativas baseadas nas fontes indicadas pelo autor]</em></div>
+      <div class="ref">[13] INE Portugal. <em>Estimativas da População Residente em Portugal 2024.</em> Lisboa: INE.</div>
+      <div class="ref">[14] Eurostat. <em>Population structure and ageing.</em> Atualização 2026.</div>
+      <div class="ref">[15] Governo de Portugal. <em>Plano de Ação Envelhecimento Ativo e Saudável 2023–2026.</em> Janeiro 2024.</div>
+      <div class="ref">[16] Direção-Geral da Saúde. <em>Plano Nacional de Saúde 2030.</em> DGS, Portugal.</div>
+      <div class="ref">[17] MIA-Portugal / Universidade de Coimbra. <em>Multidisciplinary Institute of Ageing.</em></div>
+      <div class="ref">[18] ELH. <em>Sumário Executivo da Visão do Fundo em Longevidade.</em> 2026. <em>[Fonte proprietária ELH]</em></div>
+    </div>
+    <div class="refs-method">
+      <strong>Nota sobre Fontes e Metodologia</strong>
+      Este report combina três camadas de informação: (1) <strong>dados oficiais</strong> de OMS, OCDE, Eurostat, INE Portugal e Direção-Geral da Saúde — identificados com o badge "Oficial"; (2) <strong>estimativas de mercado</strong> de relatórios setoriais e anúncios públicos de empresas — identificadas como "Estimativa setorial"; (3) <strong>análises e teses proprietárias do ELH</strong> — identificadas como "Tese proprietária ELH" ou "Análise ELH". Os dados de mercado devem ser lidos como referências orientadoras, não como métricas auditadas. Declarações marcadas como "A confirmar" aguardam validação antes de qualquer circulação pública.
+    </div>
+  </div>
+</div>
+
+<div class="foot">
+  <div class="foot-t">The Longevity Gap · Portugal 2026 · Edição I — European Longevity Hub</div>
+  <div class="foot-t">europeanlongevityhub.com</div>
+</div>
+
+</body>
+</html>
